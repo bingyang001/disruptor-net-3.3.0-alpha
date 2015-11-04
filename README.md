@@ -1,5 +1,4 @@
 ﻿# 说明：项目Disruptor是从disruptor java 3.3.0版本移植到.net 平台
-# 作者：liguo
 # 系统要求：.net framework 4.5 vs 2013  
 # java 版本地址：http://lmax-exchange.github.io/disruptor/
 
