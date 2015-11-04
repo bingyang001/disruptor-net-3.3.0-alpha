@@ -29,6 +29,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{5E844540-C653-45D2-BF25-8C9C8662B5D9}"
 	ProjectSection(SolutionItems) = preProject
 		doc\Re.txt = doc\Re.txt
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{E7A12C94-DD2B-4DC9-B36E-8DEB78DEDA88}"
