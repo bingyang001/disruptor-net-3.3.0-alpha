@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="true">
+  <TopNode>[0-1029]E:\第三方组件\B_并行框架\Disruptor-net-3.1.1\Disruptor\target\DisruptorGeneralTest\DisruptorGeneralTest.dll</TopNode>
+  <SelectedNode>[0-1028]DisruptorGeneralTest.EventPublisherTest.shouldPublishEvent</SelectedNode>
+  <ExcludeCategories>false</ExcludeCategories>
+  <Nodes>
+    <Node UniqueName="[0-1029]E:\第三方组件\B_并行框架\Disruptor-net-3.1.1\Disruptor\target\DisruptorGeneralTest\DisruptorGeneralTest.dll" Expanded="true" />
+    <Node UniqueName="[0-1030]Disruptor" Expanded="true" />
+    <Node UniqueName="[0-1031]Disruptor.Tests" Expanded="true" />
+    <Node UniqueName="[0-1032]Disruptor.Tests.Collections" Expanded="true" />
+    <Node UniqueName="[0-1000]Disruptor.Tests.Collections.HistogramTests" Expanded="true" />
+    <Node UniqueName="[0-1020]Disruptor.Tests.UtilTests" Expanded="true" />
+    <Node UniqueName="[0-1033]DisruptorGeneralTest" Expanded="true" />
+    <Node UniqueName="[0-1034]DisruptorGeneralTest.Dsl" Expanded="true" />
+    <Node UniqueName="[0-1025]DisruptorGeneralTest.Dsl.ConsumerRepositoryTest" Expanded="true" />
+    <Node UniqueName="[0-1027]DisruptorGeneralTest.EventPublisherTest" Expanded="true" />
+    <Node UniqueName="[0-1028]DisruptorGeneralTest.EventPublisherTest.shouldPublishEvent" Checked="true" />
+  </Nodes>
+</VisualState>

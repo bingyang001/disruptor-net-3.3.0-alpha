@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5FA7AD2F-009B-412C-8FF4-E2F2F960108C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>disruptorpretest</RootNamespace>
+    <AssemblyName>disruptorpretest</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\target\disruptorpretest\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Reactive.Core, Version=2.0.20823.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces, Version=2.0.20823.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq, Version=2.0.20823.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices, Version=2.0.20823.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="V3.3.0\Disruptor\AbstractPerfTestQueueVsDisruptor.cs" />
+    <Compile Include="Disruptor.V3.2.0.Reactive\1P1C\OnePublisherToOneProcessorRawBatchThroughputTest.cs" />
+    <Compile Include="Disruptor.V3.2.0.Reactive\DiamondPath1P3C\AbstractDiamondPath1P3CPerfTest.cs" />
+    <Compile Include="Disruptor.V3.2.0.Reactive\DiamondPath1P3C\DiamondPath1P3CDisruptorPerfTest.cs" />
+    <Compile Include="Support\V2.10.0\FizzBuzzEventHandler_2.cs" />
+    <Compile Include="Support\V2.10.0\FunctionEventHandler_v3.cs" />
+    <Compile Include="Support\V2.10.0\ValueMutationEventHandler_v3.cs" />
+    <Compile Include="Support\V3.2.0\Pinger.cs" />
+    <Compile Include="Support\V2.10.0\EventCountingAndReleasingWorkHandler_V3.cs" />
+    <Compile Include="Support\V3.1.1\FunctionEventHandler_V3.cs" />
+    <Compile Include="Support\V3.1.1\LatencyStepEventHandler_V3.cs" />
+    <Compile Include="Support\V2.10.0\PerfTestUtil.cs" />
+    <Compile Include="Support\V3.1.1\ValueAdditionEventHandler_V3.cs" />
+    <Compile Include="Support\V3.1.1\ValueAdditionQueueProcessor_V3.cs" />
+    <Compile Include="Support\V2.10.0\FizzBuzzEventHandler.cs" />
+    <Compile Include="Support\V3.1.1\ValueAdditionWorkHandler_V3.cs" />
+    <Compile Include="Support\V3.1.1\ValueMutationEventHandler_V3.cs" />
+    <Compile Include="Support\V3.1.1\ValuePublisher_V3.cs" />
+    <Compile Include="Support\V3.3.0\EventCountingAndReleasingWorkHandler.cs" />
+    <Compile Include="Support\V3.3.0\EventCountingQueueProcessor.cs" />
+    <Compile Include="Support\V3.3.0\EventCountingWorkHandler.cs" />
+    <Compile Include="Support\V3.3.0\FizzBuzzQueueProcessor.cs" />
+    <Compile Include="Support\V3.3.0\FunctionQueueProcessor.cs" />
+    <Compile Include="Support\V3.3.0\LongArrayEventHandler.cs" />
+    <Compile Include="Support\V3.3.0\LongArrayPublisher.cs" />
+    <Compile Include="Support\V3.3.0\MultiBufferBatchEventProcessor.cs" />
+    <Compile Include="Support\V3.3.0\PollRunnable.cs" />
+    <Compile Include="Support\V3.3.0\ValueAdditionEventHandler.cs" />
+    <Compile Include="Support\V3.3.0\ValueAdditionQueueProcessor.cs" />
+    <Compile Include="Support\V3.3.0\ValueAdditionWorkHandler.cs" />
+    <Compile Include="Support\V3.3.0\ValueMutationQueueProcessor.cs" />
+    <Compile Include="Support\V3.3.0\ValueBatchPublisher.cs" />
+    <Compile Include="Support\V3.3.0\ValuePublisher.cs" />
+    <Compile Include="Support\V3.3.0\ValueQueuePublisher.cs" />
+    <Compile Include="v2.10.0\DiamondPath1P3C\AbstractDiamondPath1P3CPerfTest.cs" />
+    <Compile Include="v2.10.0\DiamondPath1P3C\DiamondPath1P3CBlockingCollectionPerfTest.cs" />
+    <Compile Include="v2.10.0\DiamondPath1P3C\DiamondPath1P3CDisruptorPerfTest.cs" />
+    <Compile Include="v2.10.0\DiamondPath1P3C\DiamondPath1P3CDisruptorWithAffinityPerfTest.cs" />
+    <Compile Include="LatencyPerfTest.cs" />
+    <Compile Include="v2.10.0\MultiCast1P3C\AbstractMultiCast1P3CPerfTest.cs" />
+    <Compile Include="v2.10.0\MultiCast1P3C\MultiCast1P3CBlockingCollectionPerfTest.cs" />
+    <Compile Include="v2.10.0\MultiCast1P3C\MultiCast1P3CDisruptorPerfTest.cs" />
+    <Compile Include="v2.10.0\MultiCast1P3C\MultiCast1P3CDisruptorWithAffinityPerfTest.cs" />
+    <Compile Include="PerfTest.cs" />
+    <Compile Include="v2.10.0\Pipeline3StepLatency\AbstractPipeline3StepLatencyPerfTest.cs" />
+    <Compile Include="v2.10.0\Pipeline3StepLatency\Pipeline3StepLatencyBlockingCollectionPerfTest.cs" />
+    <Compile Include="v2.10.0\Pipeline3StepLatency\Pipeline3StepLatencyDisruptorPerfTest.cs" />
+    <Compile Include="v2.10.0\Pipeline3StepLatency\Pipeline3StepLatencyDisruptorWithAffinityPerfTest.cs" />
+    <Compile Include="v2.10.0\Pipeline3Step\AbstractPipeline3StepPerfTest.cs" />
+    <Compile Include="v2.10.0\Pipeline3Step\Pipeline3StepBlockingCollectionPerfTest.cs" />
+    <Compile Include="v2.10.0\Pipeline3Step\Pipeline3StepDisruptorPerfTest.cs" />
+    <Compile Include="v2.10.0\Pipeline3Step\Pipeline3StepDisruptorWithAffinityPerfTest.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="v2.10.0\Runner\ComputerSpecifications.cs" />
+    <Compile Include="v2.10.0\Runner\Implementation.cs" />
+    <Compile Include="v2.10.0\Runner\ImplementationType.cs" />
+    <Compile Include="v2.10.0\Runner\LatencyTestRun.cs" />
+    <Compile Include="v2.10.0\Runner\PerformanceTestSession.cs" />
+    <Compile Include="v2.10.0\Runner\Scenario.cs" />
+    <Compile Include="v2.10.0\Runner\ScenarioType.cs" />
+    <Compile Include="v2.10.0\Runner\TestRun.cs" />
+    <Compile Include="v2.10.0\Runner\ThroughputTestRun.cs" />
+    <Compile Include="v2.10.0\Sequencer3P1C\AbstractSequencer3P1CPerfTest.cs" />
+    <Compile Include="v2.10.0\Sequencer3P1C\Sequencer3P1CBlockingCollectionPerfTest.cs" />
+    <Compile Include="v2.10.0\Sequencer3P1C\Sequencer3P1CDisruptorPerfTest.cs" />
+    <Compile Include="v2.10.0\Sequencer3P1C\Sequencer3P1CDisruptorWithAffinityPerfTest.cs" />
+    <Compile Include="Support\V2.10.0\FizzBuzzEvent.cs" />
+    <Compile Include="Support\V3.1.1\FizzBuzzEventHandler_V3.cs" />
+    <Compile Include="Support\V2.10.0\FizzBuzzQueueEventProcessor.cs" />
+    <Compile Include="Support\V2.10.0\FizzBuzzStep.cs" />
+    <Compile Include="Support\V2.10.0\FunctionEvent.cs" />
+    <Compile Include="Support\V2.10.0\FunctionEventHandler.cs" />
+    <Compile Include="Support\V2.10.0\FunctionQueueEventProcessor.cs" />
+    <Compile Include="Support\V2.10.0\FunctionStep.cs" />
+    <Compile Include="Support\V2.10.0\LatencyStepEventHandler.cs" />
+    <Compile Include="Support\V2.10.0\LatencyStepQueueEventProcessor.cs" />
+    <Compile Include="Support\V2.10.0\Operation.cs" />
+    <Compile Include="Support\V2.10.0\OperationExtensions.cs" />
+    <Compile Include="Support\V2.10.0\ValueAdditionEventHandler.cs" />
+    <Compile Include="Support\V2.10.0\ValueAdditionQueueEventProcessor.cs" />
+    <Compile Include="Support\V2.10.0\ValueEvent.cs" />
+    <Compile Include="Support\V2.10.0\ValueMutationEventHandler.cs" />
+    <Compile Include="Support\V2.10.0\ValueMutationQueueEventProcessor.cs" />
+    <Compile Include="Support\V2.10.0\ValueProducer.cs" />
+    <Compile Include="Support\V2.10.0\ValueQueueProducer.cs" />
+    <Compile Include="ThroughputPerfTest.cs" />
+    <Compile Include="v2.10.0\UniCast1P1C\AbstractUniCast1P1CPerfTest.cs" />
+    <Compile Include="v2.10.0\UniCast1P1C\UniCast1P1CBlockingCollectionPerfTest.cs" />
+    <Compile Include="v2.10.0\UniCast1P1C\UniCast1P1CDisruptorPerfTest.cs" />
+    <Compile Include="v2.10.0\UniCast1P1C\UniCast1P1CDisruptorWithAffinityPerfTest.cs" />
+    <Compile Include="V3.1.1\OnePublisherToOneProcessorRawBatchThroughputTest.cs" />
+    <Compile Include="V3.1.1\OnePublisherToOneProcessorRawThroughputTest.cs" />
+    <Compile Include="V3.1.1\OnePublisherToOneProcessorUniCastThroughputTest.cs" />
+    <Compile Include="V3.1.1\OnePublisherToThreeProcessorDiamondThroughputTest.cs" />
+    <Compile Include="V3.1.1\OnePublisherToThreeProcessorMultiCastThroughputTest.cs" />
+    <Compile Include="V3.1.1\OnePublisherToThreeProcessorPipelineThroughputTest.cs" />
+    <Compile Include="V3.1.1\OnePublisherToThreeWorkerPoolThroughputReleasingTest.cs" />
+    <Compile Include="V3.1.1\ThreePublisherToOneProcessorSequencedThroughputTest.cs" />
+    <Compile Include="V3.1.1\ThrottledOnePublisherToThreeProcessorPipelineLatencyTest.cs" />
+    <Compile Include="V3.1.1\TwoPublisherToTwoProcessorWorkProcessorThroughputTest.cs" />
+    <Compile Include="V3.2.0\PingPongLatencyTest.cs" />
+    <Compile Include="Support\V3.2.0\Ponger.cs" />
+    <Compile Include="V3.3.0\Immutable\Constants.cs" />
+    <Compile Include="V3.3.0\Immutable\CustomPerformanceTest.cs" />
+    <Compile Include="V3.3.0\Immutable\CustomRingBuffer.cs" />
+    <Compile Include="V3.3.0\Immutable\EventHolder.cs" />
+    <Compile Include="V3.3.0\Immutable\EventHolderHandler.cs" />
+    <Compile Include="V3.3.0\Immutable\IEventAccessor.cs" />
+    <Compile Include="V3.3.0\Immutable\SimpleEvent.cs" />
+    <Compile Include="V3.3.0\Immutable\SimpleEventHandler.cs" />
+    <Compile Include="V3.3.0\Immutable\SimplePerformanceTest.cs" />
+    <Compile Include="V3.3.0\Offheap\OneToOneOffHeapThroughputTest.cs" />
+    <Compile Include="V3.3.0\Offheap\OneToOneOnHeapThroughputTest.cs" />
+    <Compile Include="V3.3.0\Queue\OneToOneQueueThroughputTest.cs" />
+    <Compile Include="V3.3.0\Queue\OneToThreeDiamondQueueThroughputTest.cs" />
+    <Compile Include="V3.3.0\Queue\OneToThreePipelineQueueThroughputTest.cs" />
+    <Compile Include="V3.3.0\Queue\OneToThreeQueueThroughputTest.cs" />
+    <Compile Include="V3.3.0\Queue\PingPongQueueLatencyTest.cs" />
+    <Compile Include="V3.3.0\Queue\ThreeToOneQueueThroughputTest.cs" />
+    <Compile Include="V3.3.0\Raw\OneToOneRawBatchThroughputTest.cs" />
+    <Compile Include="V3.3.0\Raw\OneToOneRawThroughputTest.cs" />
+    <Compile Include="V3.3.0\Sequenced\OneToOneSequencedBatchThroughputTest.cs" />
+    <Compile Include="V3.3.0\Sequenced\OneToOneSequencedLongArrayThroughputTest.cs" />
+    <Compile Include="V3.3.0\Sequenced\OneToOneSequencedPollerThroughputTest.cs" />
+    <Compile Include="V3.3.0\Sequenced\OneToOneSequencedThroughputTest.cs" />
+    <Compile Include="V3.3.0\Sequenced\OneToThreeDiamondSequencedThroughputTest.cs" />
+    <Compile Include="V3.3.0\Sequenced\OneToThreePipelineSequencedThroughputTest.cs" />
+    <Compile Include="V3.3.0\Sequenced\OneToThreeSequencedThroughputTest.cs" />
+    <Compile Include="V3.3.0\Sequenced\ThreeToOneSequencedBatchThroughputTest.cs" />
+    <Compile Include="V3.3.0\Sequenced\ThreeToOneSequencedThroughputTest.cs" />
+    <Compile Include="V3.3.0\Sequenced\ThreeToThreeSequencedThroughputTest.cs" />
+    <Compile Include="V3.3.0\Translator\OneToOneTranslatorThroughputTest.cs" />
+    <Compile Include="V3.3.0\Workhandler\OneToThreeReleasingWorkerPoolThroughputTest.cs" />
+    <Compile Include="V3.3.0\Workhandler\OneToThreeWorkerPoolThroughputTest.cs" />
+    <Compile Include="V3.3.0\Workhandler\TwoToTwoWorkProcessorThroughputTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="V3.3.0\_Disruptor.Rabbitmq\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Disruptor\Disruptor.csproj">
+      <Project>{1FBF0020-5D95-49FA-A12D-6BFE0B98DADE}</Project>
+      <Name>Disruptor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

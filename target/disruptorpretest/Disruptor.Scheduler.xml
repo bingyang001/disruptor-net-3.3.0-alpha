@@ -1,0 +1,817 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Disruptor.Scheduler</name>
+    </assembly>
+    <members>
+        <member name="T:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave">
+            <summary>Provides concurrent and exclusive task schedulers that coordinate.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave._internalLock">
+            <summary>Synchronizes all activity in this type and its generated schedulers.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave._parallelOptions">
+            <summary>The parallel options used by the asynchronous task and parallel loops.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave._concurrentTaskScheduler">
+            <summary>The scheduler used to queue and execute "reader" tasks that may run concurrently with other readers.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave._exclusiveTaskScheduler">
+            <summary>The scheduler used to queue and execute "writer" tasks that must run exclusively while no other tasks for this interleave are running.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave._taskExecuting">
+            <summary>Whether this interleave has queued its processing task.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave._exclusiveProcessingIncludesChildren">
+            <summary>Whether the exclusive processing of a task should include all of its children as well.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.#ctor">
+            <summary>Initialies the ConcurrentExclusiveInterleave.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.#ctor(System.Boolean)">
+            <summary>Initialies the ConcurrentExclusiveInterleave.</summary>
+            <param name="exclusiveProcessingIncludesChildren">Whether the exclusive processing of a task should include all of its children as well.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.#ctor(System.Threading.Tasks.TaskScheduler)">
+            <summary>Initialies the ConcurrentExclusiveInterleave.</summary>
+            <param name="targetScheduler">The target scheduler on which this interleave should execute.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.#ctor(System.Threading.Tasks.TaskScheduler,System.Boolean)">
+            <summary>Initialies the ConcurrentExclusiveInterleave.</summary>
+            <param name="targetScheduler">The target scheduler on which this interleave should execute.</param>
+            <param name="exclusiveProcessingIncludesChildren">Whether the exclusive processing of a task should include all of its children as well.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.NotifyOfNewWork">
+            <summary>Notifies the interleave that new work has arrived to be processed.</summary>
+            <remarks>Must only be called while holding the lock.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.ConcurrentExclusiveInterleaveProcessor">
+            <summary>The body of the async processor to be run in a Task.  Only one should be running at a time.</summary>
+            <remarks>This has been separated out into its own method to improve the Parallel Tasks window experience.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.ExecuteConcurrentTask(System.Threading.Tasks.Task)">
+            <summary>Runs a concurrent task.</summary>
+            <param name="task">The task to execute.</param>
+            <remarks>This has been separated out into its own method to improve the Parallel Tasks window experience.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.GetConcurrentTasksUntilExclusiveExists">
+            <summary>
+            Gets an enumerable that yields waiting concurrent tasks one at a time until
+            either there are no more concurrent tasks or there are any exclusive tasks.
+            </summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.GetExclusiveTasks">
+            <summary>
+            Gets an enumerable that yields all of the exclusive tasks one at a time.
+            </summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.ConcurrentTaskScheduler">
+            <summary>
+            Gets a TaskScheduler that can be used to schedule tasks to this interleave
+            that may run concurrently with other tasks on this interleave.
+            </summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.ExclusiveTaskScheduler">
+            <summary>
+            Gets a TaskScheduler that can be used to schedule tasks to this interleave
+            that must run exclusively with regards to other tasks on this interleave.
+            </summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.ExclusiveTaskCount">
+            <summary>Gets the number of tasks waiting to run exclusively.</summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.ConcurrentTaskCount">
+            <summary>Gets the number of tasks waiting to run concurrently.</summary>
+        </member>
+        <member name="T:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.ConcurrentExclusiveInterleaveDebugView">
+            <summary>Provides a debug view for ConcurrentExclusiveInterleave.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.ConcurrentExclusiveInterleaveDebugView._interleave">
+            <summary>The interleave being debugged.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.ConcurrentExclusiveInterleaveDebugView.#ctor(System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave)">
+            <summary>Initializes the debug view.</summary>
+            <param name="interleave">The interleave being debugged.</param>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.ConcurrentExclusiveInterleaveDebugView.ConcurrentTasksWaiting">
+            <summary>Gets the number of tasks waiting to run concurrently.</summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.ConcurrentExclusiveInterleaveDebugView.InterleaveTask">
+            <summary>Gets a description of the processing task for debugging purposes.</summary>
+        </member>
+        <member name="T:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.ConcurrentExclusiveTaskScheduler">
+            <summary>
+            A scheduler shim used to queue tasks to the interleave and execute those tasks on request of the interleave.
+            </summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.ConcurrentExclusiveTaskScheduler._interleave">
+            <summary>The parent interleave.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.ConcurrentExclusiveTaskScheduler._maximumConcurrencyLevel">
+            <summary>The maximum concurrency level for the scheduler.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.ConcurrentExclusiveTaskScheduler._processingTaskOnCurrentThread">
+            <summary>Whether a Task is currently being processed on this thread.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.ConcurrentExclusiveTaskScheduler.#ctor(System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave,System.Collections.Generic.Queue{System.Threading.Tasks.Task},System.Int32)">
+            <summary>Initializes the scheduler.</summary>
+            <param name="interleave">The parent interleave.</param>
+            <param name="tasks">The queue to store queued tasks into.</param>
+            <param name="maximumConcurrencyLevel"></param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.ConcurrentExclusiveTaskScheduler.QueueTask(System.Threading.Tasks.Task)">
+            <summary>Queues a task to the scheduler.</summary>
+            <param name="task">The task to be queued.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.ConcurrentExclusiveTaskScheduler.ExecuteTask(System.Threading.Tasks.Task)">
+            <summary>Executes a task on this scheduler.</summary>
+            <param name="task">The task to be executed.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.ConcurrentExclusiveTaskScheduler.TryExecuteTaskInline(System.Threading.Tasks.Task,System.Boolean)">
+            <summary>Tries to execute the task synchronously on this scheduler.</summary>
+            <param name="task">The task to execute.</param>
+            <param name="taskWasPreviouslyQueued">Whether the task was previously queued to the scheduler.</param>
+            <returns>true if the task could be executed; otherwise, false.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.ConcurrentExclusiveTaskScheduler.GetScheduledTasks">
+            <summary>Gets for debugging purposes the tasks scheduled to this scheduler.</summary>
+            <returns>An enumerable of the tasks queued.</returns>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.ConcurrentExclusiveTaskScheduler.MaximumConcurrencyLevel">
+            <summary>Gets the maximum concurrency level this scheduler is able to support.</summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.ConcurrentExclusiveInterleave.ConcurrentExclusiveTaskScheduler.Tasks">
+            <summary>Gets the queue of tasks for this scheduler.</summary>
+        </member>
+        <member name="T:System.Threading.Tasks.Schedulers.CurrentThreadTaskScheduler">
+            <summary>Provides a task scheduler that runs tasks on the current thread.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.CurrentThreadTaskScheduler.QueueTask(System.Threading.Tasks.Task)">
+            <summary>Runs the provided Task synchronously on the current thread.</summary>
+            <param name="task">The task to be executed.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.CurrentThreadTaskScheduler.TryExecuteTaskInline(System.Threading.Tasks.Task,System.Boolean)">
+            <summary>Runs the provided Task synchronously on the current thread.</summary>
+            <param name="task">The task to be executed.</param>
+            <param name="taskWasPreviouslyQueued">Whether the Task was previously queued to the scheduler.</param>
+            <returns>True if the Task was successfully executed; otherwise, false.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.CurrentThreadTaskScheduler.GetScheduledTasks">
+            <summary>Gets the Tasks currently scheduled to this scheduler.</summary>
+            <returns>An empty enumerable, as Tasks are never queued, only executed.</returns>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.CurrentThreadTaskScheduler.MaximumConcurrencyLevel">
+            <summary>Gets the maximum degree of parallelism for this scheduler.</summary>
+        </member>
+        <member name="T:System.Threading.Tasks.Schedulers.IOCompletionPortTaskScheduler">
+            <summary>Provides a TaskScheduler that uses an I/O completion port for concurrency control.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.IOCompletionPortTaskScheduler.m_tasks">
+            <summary>The queue of tasks to be scheduled.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.IOCompletionPortTaskScheduler.m_iocp">
+            <summary>The I/O completion port to use for concurrency control.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.IOCompletionPortTaskScheduler.m_schedulerThread">
+            <summary>Whether the current thread is a scheduler thread.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.IOCompletionPortTaskScheduler.m_remainingThreadsToShutdown">
+            <summary>Event used to wait for all threads to shutdown.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.IOCompletionPortTaskScheduler.#ctor(System.Int32,System.Int32)">
+            <summary>Initializes the IOCompletionPortTaskScheduler.</summary>
+            <param name="maxConcurrencyLevel">The maximum number of threads in the scheduler to be executing concurrently.</param>
+            <param name="numAvailableThreads">The number of threads to have available in the scheduler for executing tasks.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.IOCompletionPortTaskScheduler.Dispose">
+            <summary>Dispose of the scheduler.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.IOCompletionPortTaskScheduler.GetScheduledTasks">
+            <summary>Gets a list of all tasks scheduled to this scheduler.</summary>
+            <returns>An enumerable of all scheduled tasks.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.IOCompletionPortTaskScheduler.QueueTask(System.Threading.Tasks.Task)">
+            <summary>Queues a task to this scheduler for execution.</summary>
+            <param name="task">The task to be executed.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.IOCompletionPortTaskScheduler.TryExecuteTaskInline(System.Threading.Tasks.Task,System.Boolean)">
+            <summary>Try to execute a task on the current thread.</summary>
+            <param name="task">The task to execute.</param>
+            <param name="taskWasPreviouslyQueued">Whether the task was previously queued to this scheduler.</param>
+            <returns>Whether the task was executed.</returns>
+        </member>
+        <member name="T:System.Threading.Tasks.Schedulers.IOCompletionPortTaskScheduler.IOCompletionPort">
+            <summary>Provides a simple managed wrapper for an I/O completion port.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.IOCompletionPortTaskScheduler.IOCompletionPort.INFINITE_TIMEOUT">
+            <summary>Infinite timeout value to use for GetQueuedCompletedStatus.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.IOCompletionPortTaskScheduler.IOCompletionPort.INVALID_FILE_HANDLE">
+            <summary>An invalid file handle value.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.IOCompletionPortTaskScheduler.IOCompletionPort.INVALID_IOCP_HANDLE">
+            <summary>An invalid I/O completion port handle value.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.IOCompletionPortTaskScheduler.IOCompletionPort.m_handle">
+            <summary>The I/O completion porth handle.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.IOCompletionPortTaskScheduler.IOCompletionPort.#ctor(System.Int32)">
+            <summary>Initializes the I/O completion port.</summary>
+            <param name="maxConcurrencyLevel">The maximum concurrency level allowed by the I/O completion port.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.IOCompletionPortTaskScheduler.IOCompletionPort.Dispose">
+            <summary>Clean up.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.IOCompletionPortTaskScheduler.IOCompletionPort.NotifyOne">
+            <summary>Notify that I/O completion port that new work is available.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.IOCompletionPortTaskScheduler.IOCompletionPort.WaitOne">
+            <summary>Waits for an item on the I/O completion port.</summary>
+            <returns>true if an item was available; false if the completion port closed before an item could be retrieved.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.IOCompletionPortTaskScheduler.IOCompletionPort.CreateIoCompletionPort(System.IntPtr,System.IntPtr,System.UIntPtr,System.UInt32)">
+            <summary>
+            Creates an input/output (I/O) completion port and associates it with a specified file handle, 
+            or creates an I/O completion port that is not yet associated with a file handle, allowing association at a later time.
+            </summary>
+            <param name="fileHandle">An open file handle or INVALID_HANDLE_VALUE.</param>
+            <param name="existingCompletionPort">A handle to an existing I/O completion port or NULL.</param>
+            <param name="completionKey">The per-handle user-defined completion key that is included in every I/O completion packet for the specified file handle.</param>
+            <param name="numberOfConcurrentThreads">The maximum number of threads that the operating system can allow to concurrently process I/O completion packets for the I/O completion port.</param>
+            <returns>If the function succeeds, the return value is the handle to an I/O completion port.  If the function fails, the return value is NULL.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.IOCompletionPortTaskScheduler.IOCompletionPort.GetQueuedCompletionStatus(System.IntPtr,System.UInt32@,System.IntPtr@,System.IntPtr@,System.UInt32)">
+            <summary>Attempts to dequeue an I/O completion packet from the specified I/O completion port.</summary>
+            <param name="completionPort">A handle to the completion port.</param>
+            <param name="lpNumberOfBytes">A pointer to a variable that receives the number of bytes transferred during an I/O operation that has completed.</param>
+            <param name="lpCompletionKey">A pointer to a variable that receives the completion key value associated with the file handle whose I/O operation has completed.</param>
+            <param name="lpOverlapped">A pointer to a variable that receives the address of the OVERLAPPED structure that was specified when the completed I/O operation was started.</param>
+            <param name="dwMilliseconds">The number of milliseconds that the caller is willing to wait for a completion packet to appear at the completion port. </param>
+            <returns>Returns nonzero (TRUE) if successful or zero (FALSE) otherwise.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.IOCompletionPortTaskScheduler.IOCompletionPort.PostQueuedCompletionStatus(Microsoft.Win32.SafeHandles.SafeFileHandle,System.IntPtr,System.IntPtr,System.IntPtr)">
+            <summary>Posts an I/O completion packet to an I/O completion port.</summary>
+            <param name="completionPort">A handle to the completion port.</param>
+            <param name="dwNumberOfBytesTransferred">The value to be returned through the lpNumberOfBytesTransferred parameter of the GetQueuedCompletionStatus function.</param>
+            <param name="dwCompletionKey">The value to be returned through the lpCompletionKey parameter of the GetQueuedCompletionStatus function.</param>
+            <param name="lpOverlapped">The value to be returned through the lpOverlapped parameter of the GetQueuedCompletionStatus function.</param>
+            <returns>If the function succeeds, the return value is nonzero. If the function fails, the return value is zero.</returns>
+        </member>
+        <member name="T:System.LazyExtensions">
+            <summary>Extension methods for Lazy.</summary>
+        </member>
+        <member name="M:System.LazyExtensions.Force``1(System.Lazy{``0})">
+            <summary>Forces value creation of a Lazy instance.</summary>
+            <typeparam name="T">Specifies the type of the value being lazily initialized.</typeparam>
+            <param name="lazy">The Lazy instance.</param>
+            <returns>The initialized Lazy instance.</returns>
+        </member>
+        <member name="M:System.LazyExtensions.GetValueAsync``1(System.Lazy{``0})">
+            <summary>Retrieves the value of a Lazy asynchronously.</summary>
+            <typeparam name="T">Specifies the type of the value being lazily initialized.</typeparam>
+            <param name="lazy">The Lazy instance.</param>
+            <returns>A Task representing the Lazy's value.</returns>
+        </member>
+        <member name="M:System.LazyExtensions.Create``1(``0)">
+            <summary>Creates a Lazy that's already been initialized to a specified value.</summary>
+            <typeparam name="T">The type of the data to be initialized.</typeparam>
+            <param name="value">The value with which to initialize the Lazy instance.</param>
+            <returns>The initialized Lazy.</returns>
+        </member>
+        <member name="T:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler">
+            <summary>
+            Provides a task scheduler that ensures a maximum concurrency level while
+            running on top of the ThreadPool.
+            </summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler._currentThreadIsProcessingItems">
+            <summary>Whether the current thread is processing work items.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler._tasks">
+            <summary>The list of tasks to be executed.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler._maxDegreeOfParallelism">
+            <summary>The maximum concurrency level allowed by this scheduler.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler._delegatesQueuedOrRunning">
+            <summary>Whether the scheduler is currently processing work items.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler.#ctor(System.Int32)">
+            <summary>
+            Initializes an instance of the LimitedConcurrencyLevelTaskScheduler class with the
+            specified degree of parallelism.
+            </summary>
+            <param name="maxDegreeOfParallelism">The maximum degree of parallelism provided by this scheduler.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler.QueueTask(System.Threading.Tasks.Task)">
+            <summary>Queues a task to the scheduler.</summary>
+            <param name="task">The task to be queued.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler.NotifyThreadPoolOfPendingWork">
+            <summary>
+            Informs the ThreadPool that there's work to be executed for this scheduler.
+            </summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler.TryExecuteTaskInline(System.Threading.Tasks.Task,System.Boolean)">
+            <summary>Attempts to execute the specified task on the current thread.</summary>
+            <param name="task">The task to be executed.</param>
+            <param name="taskWasPreviouslyQueued"></param>
+            <returns>Whether the task could be executed on the current thread.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler.TryDequeue(System.Threading.Tasks.Task)">
+            <summary>Attempts to remove a previously scheduled task from the scheduler.</summary>
+            <param name="task">The task to be removed.</param>
+            <returns>Whether the task could be found and removed.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler.GetScheduledTasks">
+            <summary>Gets an enumerable of the tasks currently scheduled on this scheduler.</summary>
+            <returns>An enumerable of the tasks currently scheduled.</returns>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler.MaximumConcurrencyLevel">
+            <summary>Gets the maximum concurrency level supported by this scheduler.</summary>
+        </member>
+        <member name="T:System.Threading.Tasks.Schedulers.OrderedTaskScheduler">
+            <summary>
+            Provides a task scheduler that ensures only one task is executing at a time, and that tasks
+            execute in the order that they were queued.
+            </summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.OrderedTaskScheduler.#ctor">
+            <summary>Initializes an instance of the OrderedTaskScheduler class.</summary>
+        </member>
+        <member name="T:System.Threading.Tasks.Schedulers.QueuedTaskScheduler">
+            <summary>
+            Provides a TaskScheduler that provides control over priorities, fairness, and the underlying threads utilized.
+            </summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.QueuedTaskScheduler._queueGroups">
+            <summary>
+            A sorted list of round-robin queue lists.  Tasks with the smallest priority value
+            are preferred.  Priority groups are round-robin'd through in order of priority.
+            </summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.QueuedTaskScheduler._disposeCancellation">
+            <summary>Cancellation token used for disposal.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.QueuedTaskScheduler._concurrencyLevel">
+            <summary>
+            The maximum allowed concurrency level of this scheduler.  If custom threads are
+            used, this represents the number of created threads.
+            </summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.QueuedTaskScheduler._taskProcessingThread">
+            <summary>Whether we're processing tasks on the current thread.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.QueuedTaskScheduler._targetScheduler">
+            <summary>The scheduler onto which actual work is scheduled.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.QueuedTaskScheduler._nonthreadsafeTaskQueue">
+            <summary>The queue of tasks to process when using an underlying target scheduler.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.QueuedTaskScheduler._delegatesQueuedOrRunning">
+            <summary>The number of Tasks that have been queued or that are running whiel using an underlying scheduler.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.QueuedTaskScheduler._threads">
+            <summary>The threads used by the scheduler to process work.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.QueuedTaskScheduler._blockingTaskQueue">
+            <summary>The collection of tasks to be executed on our custom threads.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.#ctor">
+            <summary>Initializes the scheduler.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.#ctor(System.Threading.Tasks.TaskScheduler)">
+            <summary>Initializes the scheduler.</summary>
+            <param name="targetScheduler">The target underlying scheduler onto which this sceduler's work is queued.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.#ctor(System.Threading.Tasks.TaskScheduler,System.Int32)">
+            <summary>Initializes the scheduler.</summary>
+            <param name="targetScheduler">The target underlying scheduler onto which this sceduler's work is queued.</param>
+            <param name="maxConcurrencyLevel">The maximum degree of concurrency allowed for this scheduler's work.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.#ctor(System.Int32)">
+            <summary>Initializes the scheduler.</summary>
+            <param name="threadCount">The number of threads to create and use for processing work items.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.#ctor(System.Int32,System.String,System.Boolean,System.Threading.ThreadPriority,System.Threading.ApartmentState,System.Int32,System.Action,System.Action)">
+            <summary>Initializes the scheduler.</summary>
+            <param name="threadCount">The number of threads to create and use for processing work items.</param>
+            <param name="threadName">The name to use for each of the created threads.</param>
+            <param name="useForegroundThreads">A Boolean value that indicates whether to use foreground threads instead of background.</param>
+            <param name="threadPriority">The priority to assign to each thread.</param>
+            <param name="threadApartmentState">The apartment state to use for each thread.</param>
+            <param name="threadMaxStackSize">The stack size to use for each thread.</param>
+            <param name="threadInit">An initialization routine to run on each thread.</param>
+            <param name="threadFinally">A finalization routine to run on each thread.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.ThreadBasedDispatchLoop(System.Action,System.Action)">
+            <summary>The dispatch loop run by all threads in this scheduler.</summary>
+            <param name="threadInit">An initialization routine to run when the thread begins.</param>
+            <param name="threadFinally">A finalization routine to run before the thread ends.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.FindNextTask_NeedsLock(System.Threading.Tasks.Task@,System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue@)">
+            <summary>Find the next task that should be executed, based on priorities and fairness and the like.</summary>
+            <param name="targetTask">The found task, or null if none was found.</param>
+            <param name="queueForTargetTask">
+            The scheduler associated with the found task.  Due to security checks inside of TPL,  
+            this scheduler needs to be used to execute that task.
+            </param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueueTask(System.Threading.Tasks.Task)">
+            <summary>Queues a task to the scheduler.</summary>
+            <param name="task">The task to be queued.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.ProcessPrioritizedAndBatchedTasks">
+            <summary>
+            Process tasks one at a time in the best order.  
+            This should be run in a Task generated by QueueTask.
+            It's been separated out into its own method to show up better in Parallel Tasks.
+            </summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.NotifyNewWorkItem">
+            <summary>Notifies the pool that there's a new item to be executed in one of the round-robin queues.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.TryExecuteTaskInline(System.Threading.Tasks.Task,System.Boolean)">
+            <summary>Tries to execute a task synchronously on the current thread.</summary>
+            <param name="task">The task to execute.</param>
+            <param name="taskWasPreviouslyQueued">Whether the task was previously queued.</param>
+            <returns>true if the task was executed; otherwise, false.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.GetScheduledTasks">
+            <summary>Gets the tasks scheduled to this scheduler.</summary>
+            <returns>An enumerable of all tasks queued to this scheduler.</returns>
+            <remarks>This does not include the tasks on sub-schedulers.  Those will be retrieved by the debugger separately.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.Dispose">
+            <summary>Initiates shutdown of the scheduler.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.ActivateNewQueue">
+            <summary>Creates and activates a new scheduling queue for this scheduler.</summary>
+            <returns>The newly created and activated queue at priority 0.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.ActivateNewQueue(System.Int32)">
+            <summary>Creates and activates a new scheduling queue for this scheduler.</summary>
+            <param name="priority">The priority level for the new queue.</param>
+            <returns>The newly created and activated queue at the specified priority.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.RemoveQueue_NeedsLock(System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue)">
+            <summary>Removes a scheduler from the group.</summary>
+            <param name="queue">The scheduler to be removed.</param>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.DebugQueueCount">
+            <summary>Gets the number of queues currently activated.</summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.DebugTaskCount">
+            <summary>Gets the number of tasks currently scheduled.</summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.MaximumConcurrencyLevel">
+            <summary>Gets the maximum concurrency level to use when processing tasks.</summary>
+        </member>
+        <member name="T:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerDebugView">
+            <summary>Debug view for the QueuedTaskScheduler.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerDebugView._scheduler">
+            <summary>The scheduler.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerDebugView.#ctor(System.Threading.Tasks.Schedulers.QueuedTaskScheduler)">
+            <summary>Initializes the debug view.</summary>
+            <param name="scheduler">The scheduler.</param>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerDebugView.ScheduledTasks">
+            <summary>Gets all of the Tasks queued to the scheduler directly.</summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerDebugView.Queues">
+            <summary>Gets the prioritized and fair queues.</summary>
+        </member>
+        <member name="T:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueueGroup">
+            <summary>A group of queues a the same priority level.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueueGroup.NextQueueIndex">
+            <summary>The starting index for the next round-robin traversal.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueueGroup.CreateSearchOrder">
+            <summary>Creates a search order through this group.</summary>
+            <returns>An enumerable of indices for this group.</returns>
+        </member>
+        <member name="T:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue">
+            <summary>Provides a scheduling queue associatd with a QueuedTaskScheduler.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue._pool">
+            <summary>The scheduler with which this pool is associated.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue._workItems">
+            <summary>The work items stored in this queue.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue._disposed">
+            <summary>Whether this queue has been disposed.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue._priority">
+            <summary>Gets the priority for this queue.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue.#ctor(System.Int32,System.Threading.Tasks.Schedulers.QueuedTaskScheduler)">
+            <summary>Initializes the queue.</summary>
+            <param name="priority">The priority associated with this queue.</param>
+            <param name="pool">The scheduler with which this queue is associated.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue.GetScheduledTasks">
+            <summary>Gets the tasks scheduled to this scheduler.</summary>
+            <returns>An enumerable of all tasks queued to this scheduler.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue.QueueTask(System.Threading.Tasks.Task)">
+            <summary>Queues a task to the scheduler.</summary>
+            <param name="task">The task to be queued.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue.TryExecuteTaskInline(System.Threading.Tasks.Task,System.Boolean)">
+            <summary>Tries to execute a task synchronously on the current thread.</summary>
+            <param name="task">The task to execute.</param>
+            <param name="taskWasPreviouslyQueued">Whether the task was previously queued.</param>
+            <returns>true if the task was executed; otherwise, false.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue.ExecuteTask(System.Threading.Tasks.Task)">
+            <summary>Runs the specified ask.</summary>
+            <param name="task">The task to execute.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue.Dispose">
+            <summary>Signals that the queue should be removed from the scheduler as soon as the queue is empty.</summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue.WaitingTasks">
+            <summary>Gets the number of tasks waiting in this scheduler.</summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue.MaximumConcurrencyLevel">
+            <summary>Gets the maximum concurrency level to use when processing tasks.</summary>
+        </member>
+        <member name="T:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue.QueuedTaskSchedulerQueueDebugView">
+            <summary>A debug view for the queue.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue.QueuedTaskSchedulerQueueDebugView._queue">
+            <summary>The queue.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue.QueuedTaskSchedulerQueueDebugView.#ctor(System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue)">
+            <summary>Initializes the debug view.</summary>
+            <param name="queue">The queue to be debugged.</param>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue.QueuedTaskSchedulerQueueDebugView.Priority">
+            <summary>Gets the priority of this queue in its associated scheduler.</summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue.QueuedTaskSchedulerQueueDebugView.Id">
+            <summary>Gets the ID of this scheduler.</summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue.QueuedTaskSchedulerQueueDebugView.ScheduledTasks">
+            <summary>Gets all of the tasks scheduled to this queue.</summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.QueuedTaskScheduler.QueuedTaskSchedulerQueue.QueuedTaskSchedulerQueueDebugView.AssociatedScheduler">
+            <summary>Gets the QueuedTaskScheduler with which this queue is associated.</summary>
+        </member>
+        <member name="T:System.Threading.Tasks.Schedulers.ReprioritizableTaskScheduler">
+            <summary>Provides a task scheduler that supports reprioritizing previously queued tasks.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ReprioritizableTaskScheduler.QueueTask(System.Threading.Tasks.Task)">
+            <summary>Queues a task to the scheduler.</summary>
+            <param name="task">The task to be queued.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ReprioritizableTaskScheduler.Prioritize(System.Threading.Tasks.Task)">
+            <summary>Reprioritizes a previously queued task to the front of the queue.</summary>
+            <param name="task">The task to be reprioritized.</param>
+            <returns>Whether the task could be found and moved to the front of the queue.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ReprioritizableTaskScheduler.Deprioritize(System.Threading.Tasks.Task)">
+            <summary>Reprioritizes a previously queued task to the back of the queue.</summary>
+            <param name="task">The task to be reprioritized.</param>
+            <returns>Whether the task could be found and moved to the back of the queue.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ReprioritizableTaskScheduler.TryDequeue(System.Threading.Tasks.Task)">
+            <summary>Removes a previously queued item from the scheduler.</summary>
+            <param name="task">The task to be removed.</param>
+            <returns>Whether the task could be removed from the scheduler.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ReprioritizableTaskScheduler.ProcessNextQueuedItem(System.Object)">
+            <summary>Picks up and executes the next item in the queue.</summary>
+            <param name="ignored">Ignored.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ReprioritizableTaskScheduler.TryExecuteTaskInline(System.Threading.Tasks.Task,System.Boolean)">
+            <summary>Executes the specified task inline.</summary>
+            <param name="task">The task to be executed.</param>
+            <param name="taskWasPreviouslyQueued">Whether the task was previously queued.</param>
+            <returns>Whether the task could be executed inline.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ReprioritizableTaskScheduler.GetScheduledTasks">
+            <summary>Gets all of the tasks currently queued to the scheduler.</summary>
+            <returns>An enumerable of the tasks currently queued to the scheduler.</returns>
+        </member>
+        <member name="T:System.Threading.Tasks.Schedulers.RoundRobinSchedulerGroup">
+            <summary>Enables the creation of a group of schedulers that support round-robin scheduling for fairness.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.RoundRobinSchedulerGroup.CreateScheduler">
+            <summary>Creates a new scheduler as part of this group.</summary>
+            <returns>The new scheduler.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.RoundRobinSchedulerGroup.RemoveQueue_NeedsLock(System.Threading.Tasks.Schedulers.RoundRobinSchedulerGroup.RoundRobinTaskSchedulerQueue)">
+            <summary>Removes a scheduler from the group.</summary>
+            <param name="queue">The scheduler to be removed.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.RoundRobinSchedulerGroup.NotifyNewWorkItem">
+            <summary>Notifies the ThreadPool that there's a new item to be executed.</summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.RoundRobinSchedulerGroup.Schedulers">
+            <summary>Gets a collection of all schedulers in this group.</summary>
+        </member>
+        <member name="T:System.Threading.Tasks.Schedulers.RoundRobinSchedulerGroup.RoundRobinTaskSchedulerQueue">
+            <summary>A scheduler that participates in round-robin scheduling.</summary>
+        </member>
+        <member name="T:Disruptor.Scheduler.RoundRobinThreadAffinedTaskScheduler">
+            <summary>
+            An implementation of <see cref="T:System.Threading.Tasks.TaskScheduler"/> which creates an underlying thread pool and set processor affinity to each thread.
+            </summary>
+        </member>
+        <member name="M:Disruptor.Scheduler.RoundRobinThreadAffinedTaskScheduler.#ctor(System.Int32)">
+            <summary>
+            Create a new <see cref="T:Disruptor.Scheduler.RoundRobinThreadAffinedTaskScheduler"/> with a provided number of background threads. 
+            Threads are pined to a logical core using a round robin algorithm.
+            </summary>
+            <param name="numberOfThreads">Total number of threads in the pool.</param>
+        </member>
+        <member name="M:Disruptor.Scheduler.RoundRobinThreadAffinedTaskScheduler.#ctor(System.Int32,System.Int32[])">
+            <summary>
+            Create a new <see cref="T:Disruptor.Scheduler.RoundRobinThreadAffinedTaskScheduler"/> with a provided number of background threads. 
+            Threads are pined to a logical core using a round roubin algorithm choosen between provided processor indexes
+            </summary>
+            <param name="numberOfThreads">Total number of threads in the pool.</param>
+            <param name="processorIndexes">One or more logical processor identifier(s) the threads are allowed to run on. 0-based indexes.</param>
+        </member>
+        <member name="M:Disruptor.Scheduler.RoundRobinThreadAffinedTaskScheduler.QueueTask(System.Threading.Tasks.Task)">
+            <summary>
+            Queues a <see cref="T:System.Threading.Tasks.Task"/> to the scheduler.
+            </summary>
+            <param name="task">The <see cref="T:System.Threading.Tasks.Task"/> to be queued.</param><exception cref="T:System.ArgumentNullException">The <paramref name="task"/> argument is null.</exception>
+        </member>
+        <member name="M:Disruptor.Scheduler.RoundRobinThreadAffinedTaskScheduler.TryExecuteTaskInline(System.Threading.Tasks.Task,System.Boolean)">
+            <summary>
+            Determines whether the provided <see cref="T:System.Threading.Tasks.Task"/> can be executed synchronously in this call, and if it can, executes it.
+            </summary>
+            <returns>
+            A Boolean value indicating whether the task was executed inline.
+            </returns>
+            <param name="task">The <see cref="T:System.Threading.Tasks.Task"/> to be executed.</param><param name="taskWasPreviouslyQueued">A Boolean denoting whether or not task has previously been queued. If this parameter is True, then the task may have been previously queued (scheduled); if False, then the task is known not to have been queued, and this call is being made in order to execute the task inline without queuing it.</param><exception cref="T:System.ArgumentNullException">The <paramref name="task"/> argument is null.</exception><exception cref="T:System.InvalidOperationException">The <paramref name="task"/> was already executed.</exception>
+        </member>
+        <member name="M:Disruptor.Scheduler.RoundRobinThreadAffinedTaskScheduler.GetScheduledTasks">
+            <summary>
+            Generates an enumerable of <see cref="T:System.Threading.Tasks.Task"/> instances currently queued to the scheduler waiting to be executed.
+            </summary>
+            <returns>
+            An enumerable that allows traversal of tasks currently queued to this scheduler.
+            </returns>
+            <exception cref="T:System.NotSupportedException">This scheduler is unable to generate a list of queued tasks at this time.</exception>
+        </member>
+        <member name="M:Disruptor.Scheduler.RoundRobinThreadAffinedTaskScheduler.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="P:Disruptor.Scheduler.RoundRobinThreadAffinedTaskScheduler.MaximumConcurrencyLevel">
+            <summary>
+            Indicates the maximum concurrency level this <see cref="T:System.Threading.Tasks.TaskScheduler"/> is able to support.
+            </summary>
+            <returns>
+            Returns an integer that represents the maximum concurrency level.
+            </returns>
+        </member>
+        <member name="T:System.Threading.Tasks.Schedulers.StaTaskScheduler">
+            <summary>Provides a scheduler that uses STA threads.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.StaTaskScheduler._tasks">
+            <summary>Stores the queued tasks to be executed by our pool of STA threads.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.StaTaskScheduler._threads">
+            <summary>The STA threads used by the scheduler.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.StaTaskScheduler.#ctor(System.Int32)">
+            <summary>Initializes a new instance of the StaTaskScheduler class with the specified concurrency level.</summary>
+            <param name="numberOfThreads">The number of threads that should be created and used by this scheduler.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.StaTaskScheduler.QueueTask(System.Threading.Tasks.Task)">
+            <summary>Queues a Task to be executed by this scheduler.</summary>
+            <param name="task">The task to be executed.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.StaTaskScheduler.GetScheduledTasks">
+            <summary>Provides a list of the scheduled tasks for the debugger to consume.</summary>
+            <returns>An enumerable of all tasks currently scheduled.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.StaTaskScheduler.TryExecuteTaskInline(System.Threading.Tasks.Task,System.Boolean)">
+            <summary>Determines whether a Task may be inlined.</summary>
+            <param name="task">The task to be executed.</param>
+            <param name="taskWasPreviouslyQueued">Whether the task was previously queued.</param>
+            <returns>true if the task was successfully inlined; otherwise, false.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.StaTaskScheduler.Dispose">
+            <summary>
+            Cleans up the scheduler by indicating that no more tasks will be queued.
+            This method blocks until all threads successfully shutdown.
+            </summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.StaTaskScheduler.MaximumConcurrencyLevel">
+            <summary>Gets the maximum concurrency level supported by this scheduler.</summary>
+        </member>
+        <member name="T:System.Threading.Tasks.Schedulers.SynchronizationContextTaskScheduler">
+            <summary>Provides a task scheduler that targets a specific SynchronizationContext.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.SynchronizationContextTaskScheduler._tasks">
+            <summary>The queue of tasks to execute, maintained for debugging purposes.</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.SynchronizationContextTaskScheduler._context">
+            <summary>The target context under which to execute the queued tasks.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.SynchronizationContextTaskScheduler.#ctor">
+            <summary>Initializes an instance of the SynchronizationContextTaskScheduler class.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.SynchronizationContextTaskScheduler.#ctor(System.Threading.SynchronizationContext)">
+            <summary>
+            Initializes an instance of the SynchronizationContextTaskScheduler class
+            with the specified SynchronizationContext.
+            </summary>
+            <param name="context">The SynchronizationContext under which to execute tasks.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.SynchronizationContextTaskScheduler.QueueTask(System.Threading.Tasks.Task)">
+            <summary>Queues a task to the scheduler for execution on the I/O ThreadPool.</summary>
+            <param name="task">The Task to queue.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.SynchronizationContextTaskScheduler.TryExecuteTaskInline(System.Threading.Tasks.Task,System.Boolean)">
+            <summary>Tries to execute a task on the current thread.</summary>
+            <param name="task">The task to be executed.</param>
+            <param name="taskWasPreviouslyQueued">Ignored.</param>
+            <returns>Whether the task could be executed.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.SynchronizationContextTaskScheduler.GetScheduledTasks">
+            <summary>Gets an enumerable of tasks queued to the scheduler.</summary>
+            <returns>An enumerable of tasks queued to the scheduler.</returns>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.SynchronizationContextTaskScheduler.MaximumConcurrencyLevel">
+            <summary>Gets the maximum concurrency level supported by this scheduler.</summary>
+        </member>
+        <member name="T:System.Threading.Tasks.Schedulers.ThreadPerTaskScheduler">
+            <summary>Provides a task scheduler that dedicates a thread per task.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ThreadPerTaskScheduler.GetScheduledTasks">
+            <summary>Gets the tasks currently scheduled to this scheduler.</summary>
+            <remarks>This will always return an empty enumerable, as tasks are launched as soon as they're queued.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ThreadPerTaskScheduler.QueueTask(System.Threading.Tasks.Task)">
+            <summary>Starts a new thread to process the provided task.</summary>
+            <param name="task">The task to be executed.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.ThreadPerTaskScheduler.TryExecuteTaskInline(System.Threading.Tasks.Task,System.Boolean)">
+            <summary>Runs the provided task on the current thread.</summary>
+            <param name="task">The task to be executed.</param>
+            <param name="taskWasPreviouslyQueued">Ignored.</param>
+            <returns>Whether the task could be executed on the current thread.</returns>
+        </member>
+        <member name="T:System.Threading.Tasks.Schedulers.WorkStealingTaskScheduler">
+            <summary>Provides a work-stealing scheduler.</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.WorkStealingTaskScheduler.#ctor">
+            <summary>Initializes a new instance of the WorkStealingTaskScheduler class.</summary>
+            <remarks>This constructors defaults to using twice as many threads as there are processors.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.WorkStealingTaskScheduler.#ctor(System.Int32)">
+            <summary>Initializes a new instance of the WorkStealingTaskScheduler class.</summary>
+            <param name="concurrencyLevel">The number of threads to use in the scheduler.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.WorkStealingTaskScheduler.QueueTask(System.Threading.Tasks.Task)">
+            <summary>Queues a task to the scheduler.</summary>
+            <param name="task">The task to be scheduled.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.WorkStealingTaskScheduler.TryExecuteTaskInline(System.Threading.Tasks.Task,System.Boolean)">
+            <summary>Executes a task on the current thread.</summary>
+            <param name="task">The task to be executed.</param>
+            <param name="taskWasPreviouslyQueued">Ignored.</param>
+            <returns>Whether the task could be executed.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.WorkStealingTaskScheduler.GetScheduledTasks">
+            <summary>Gets all of the tasks currently scheduled to this scheduler.</summary>
+            <returns>An enumerable containing all of the scheduled tasks.</returns>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.WorkStealingTaskScheduler.AddWsq(System.Threading.Tasks.Schedulers.WorkStealingQueue{System.Threading.Tasks.Task})">
+            <summary>Adds a work-stealing queue to the set of queues.</summary>
+            <param name="wsq">The queue to be added.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.WorkStealingTaskScheduler.RemoveWsq(System.Threading.Tasks.Schedulers.WorkStealingQueue{System.Threading.Tasks.Task})">
+            <summary>Remove a work-stealing queue from the set of queues.</summary>
+            <param name="wsq">The work-stealing queue to remove.</param>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.WorkStealingTaskScheduler.DispatchLoop">
+            <summary>
+            The dispatch loop run by each thread in the scheduler.
+            </summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.WorkStealingTaskScheduler.Dispose">
+            <summary>Signal the scheduler to shutdown and wait for all threads to finish.</summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.WorkStealingTaskScheduler.MaximumConcurrencyLevel">
+            <summary>Gets the maximum concurrency level supported by this scheduler.</summary>
+        </member>
+        <member name="T:System.Threading.Tasks.Schedulers.WorkStealingQueue`1">
+            <summary>A work-stealing queue.</summary>
+            <typeparam name="T">Specifies the type of data stored in the queue.</typeparam>
+        </member>
+    </members>
+</doc>

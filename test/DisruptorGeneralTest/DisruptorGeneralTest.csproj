@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8B3829B8-AEF1-4896-A01A-E764EE502132}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DisruptorGeneralTest</RootNamespace>
+    <AssemblyName>DisruptorGeneralTest</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\target\DisruptorGeneralTest\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Moq, Version=4.0.10827.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AggregateEventHandlerTest.cs" />
+    <Compile Include="BatchEventProcessorTest.cs" />
+    <Compile Include="BusySpinWaitStrategyTest.cs" />
+    <Compile Include="Collections\HistogramTests.cs" />
+    <Compile Include="Dsl\ConsumerRepositoryTest.cs" />
+    <Compile Include="Dsl\stubs\DelayedEventHandler.cs" />
+    <Compile Include="Dsl\stubs\EventHandlerStub.cs" />
+    <Compile Include="Dsl\stubs\EvilEqualsEventHandler.cs" />
+    <Compile Include="Dsl\stubs\ExceptionThrowingEventHandler.cs" />
+    <Compile Include="Dsl\stubs\SleepingEventHandler.cs" />
+    <Compile Include="Dsl\stubs\StubExceptionHandler.cs" />
+    <Compile Include="Dsl\stubs\StubExecutor.cs" />
+    <Compile Include="Dsl\stubs\StubPublisher.cs" />
+    <Compile Include="Dsl\stubs\TestWorkHandler.cs" />
+    <Compile Include="DummySequenceBarrier.cs" />
+    <Compile Include="EventPublisherTest.cs" />
+    <Compile Include="EventTranslatorTest.cs" />
+    <Compile Include="EventTranslatorTwoArg.cs" />
+    <Compile Include="ExampleEventTranslator.cs" />
+    <Compile Include="Example_3.3.0\NamedEventHandler.cs" />
+    <Compile Include="Example_3.3.0\TwoDisruptors.cs" />
+    <Compile Include="FatalExceptionHandlerTest.cs" />
+    <Compile Include="FixedSequenceGroupTest.cs" />
+    <Compile Include="IgnoreExceptionHandlerTest.cs" />
+    <Compile Include="LifecycleAwareTest.cs" />
+    <Compile Include="MultiProducerSequencerTest.cs" />
+    <Compile Include="PhasedBackoffWaitStrategyTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RingBufferTest.cs" />
+    <Compile Include="SequenceBarrierTest.cs" />
+    <Compile Include="SequenceGroupTest.cs" />
+    <Compile Include="SequenceReportingCallbackTest.cs" />
+    <Compile Include="SequencerTest.cs" />
+    <Compile Include="SequenceUpdater.cs" />
+    <Compile Include="ShutdownOnFatalExceptionTest.cs" />
+    <Compile Include="SleepingWaitStrategyTest.cs" />
+    <Compile Include="Support\LongEvent.cs" />
+    <Compile Include="Support\StubEvent.cs" />
+    <Compile Include="Support\TestEvent.cs" />
+    <Compile Include="Support\TestWaiter.cs" />
+    <Compile Include="UtilTests.cs" />
+    <Compile Include="WaitStrategyTestUtil.cs" />
+    <Compile Include="WorkerPoolTest.cs" />
+    <Compile Include="YieldingWaitStrategyTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Disruptor\Disruptor.csproj">
+      <Project>{1FBF0020-5D95-49FA-A12D-6BFE0B98DADE}</Project>
+      <Name>Disruptor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

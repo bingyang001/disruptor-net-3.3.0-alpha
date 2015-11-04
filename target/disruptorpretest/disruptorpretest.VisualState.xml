@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="true">
+  <TopNode>[0-1068]disruptorpretest.V3._3._0.Queue.OneToThreeDiamondQueueThroughputTest.AbstractPerfTestQueueVsDisruptor.TestImplementations</TopNode>
+  <SelectedNode>[0-1092]disruptorpretest.V3._3._0.Sequenced.OneToThreePipelineSequencedThroughputTest.AbstractPerfTestQueueVsDisruptor.TestImplementations</SelectedNode>
+  <ExcludeCategories>false</ExcludeCategories>
+  <Nodes>
+    <Node UniqueName="[0-1000]E:\第三方组件\B_并行框架\Disruptor-net-3.1.1\Disruptor -3.3.0 net 4.5\target\disruptorpretest\disruptorpretest.nunit" Expanded="true" />
+    <Node UniqueName="[0-1109]E:\第三方组件\B_并行框架\Disruptor-net-3.1.1\Disruptor -3.3.0 net 4.5\target\disruptorpretest\disruptorpretest.exe" Expanded="true" />
+    <Node UniqueName="[0-1110]Disruptor_V3_2_0_Reactive" Expanded="true" />
+    <Node UniqueName="[0-1111]Disruptor_V3_2_0_Reactive._1P1C" Expanded="true" />
+    <Node UniqueName="[0-1112]Disruptor_V3_2_0_Reactive.DiamondPath1P3C" Expanded="true" />
+    <Node UniqueName="[0-1113]disruptorpretest" Expanded="true" />
+    <Node UniqueName="[0-1114]disruptorpretest.DiamondPath1P3C" Expanded="true" />
+    <Node UniqueName="[0-1115]disruptorpretest.MultiCast1P3C" Expanded="true" />
+    <Node UniqueName="[0-1117]disruptorpretest.Pipeline3Step" Expanded="true" />
+    <Node UniqueName="[0-1116]disruptorpretest.Pipeline3StepLatency" Expanded="true" />
+    <Node UniqueName="[0-1118]disruptorpretest.Sequencer3P1C" Expanded="true" />
+    <Node UniqueName="[0-1119]disruptorpretest.UniCast1P1C" Expanded="true" />
+    <Node UniqueName="[0-1120]disruptorpretest.V3" Expanded="true" />
+    <Node UniqueName="[0-1121]disruptorpretest.V3._1" Expanded="true" />
+    <Node UniqueName="[0-1122]disruptorpretest.V3._1._1" Expanded="true" />
+    <Node UniqueName="[0-1043]disruptorpretest.V3._1._1.OnePublisherToOneProcessorRawBatchThroughputTest" Expanded="true" />
+    <Node UniqueName="[0-1041]disruptorpretest.V3._1._1.OnePublisherToOneProcessorRawThroughputTest" Expanded="true" />
+    <Node UniqueName="[0-1059]disruptorpretest.V3._1._1.TwoPublisherToTwoProcessorWorkProcessorThroughputTest" Expanded="true" />
+    <Node UniqueName="[0-1123]disruptorpretest.V3._2" Expanded="true" />
+    <Node UniqueName="[0-1124]disruptorpretest.V3._2._0" Expanded="true" />
+    <Node UniqueName="[0-1125]disruptorpretest.V3._3" Expanded="true" />
+    <Node UniqueName="[0-1126]disruptorpretest.V3._3._0" Expanded="true" />
+    <Node UniqueName="[0-1127]disruptorpretest.V3._3._0.Offheap" Expanded="true" />
+    <Node UniqueName="[0-1128]disruptorpretest.V3._3._0.Queue" Expanded="true" />
+    <Node UniqueName="[0-1065]disruptorpretest.V3._3._0.Queue.OneToOneQueueThroughputTest" Expanded="true" />
+    <Node UniqueName="[0-1067]disruptorpretest.V3._3._0.Queue.OneToThreeDiamondQueueThroughputTest" Expanded="true" />
+    <Node UniqueName="[0-1069]disruptorpretest.V3._3._0.Queue.OneToThreePipelineQueueThroughputTest" Expanded="true" />
+    <Node UniqueName="[0-1071]disruptorpretest.V3._3._0.Queue.OneToThreeQueueThroughputTest" Expanded="true" />
+    <Node UniqueName="[0-1073]disruptorpretest.V3._3._0.Queue.PingPongQueueLatencyTest" Expanded="true" />
+    <Node UniqueName="[0-1075]disruptorpretest.V3._3._0.Queue.ThreeToOneQueueThroughputTest" Expanded="true" />
+    <Node UniqueName="[0-1129]disruptorpretest.V3._3._0.Raw" Expanded="true" />
+    <Node UniqueName="[0-1130]disruptorpretest.V3._3._0.Sequenced" Expanded="true" />
+    <Node UniqueName="[0-1081]disruptorpretest.V3._3._0.Sequenced.OneToOneSequencedBatchThroughputTest" Expanded="true" />
+    <Node UniqueName="[0-1083]disruptorpretest.V3._3._0.Sequenced.OneToOneSequencedLongArrayThroughputTest" Expanded="true" />
+    <Node UniqueName="[0-1085]disruptorpretest.V3._3._0.Sequenced.OneToOneSequencedPollerThroughputTest" Expanded="true" />
+    <Node UniqueName="[0-1087]disruptorpretest.V3._3._0.Sequenced.OneToOneSequencedThroughputTest" Expanded="true" />
+    <Node UniqueName="[0-1089]disruptorpretest.V3._3._0.Sequenced.OneToThreeDiamondSequencedThroughputTest" Expanded="true" />
+    <Node UniqueName="[0-1091]disruptorpretest.V3._3._0.Sequenced.OneToThreePipelineSequencedThroughputTest" Expanded="true" />
+    <Node UniqueName="[0-1092]disruptorpretest.V3._3._0.Sequenced.OneToThreePipelineSequencedThroughputTest.AbstractPerfTestQueueVsDisruptor.TestImplementations" Checked="true" />
+    <Node UniqueName="[0-1093]disruptorpretest.V3._3._0.Sequenced.OneToThreeSequencedThroughputTest" Expanded="true" />
+    <Node UniqueName="[0-1095]disruptorpretest.V3._3._0.Sequenced.ThreeToOneSequencedBatchThroughputTest" Expanded="true" />
+    <Node UniqueName="[0-1097]disruptorpretest.V3._3._0.Sequenced.ThreeToOneSequencedThroughputTest" Expanded="true" />
+    <Node UniqueName="[0-1099]disruptorpretest.V3._3._0.Sequenced.ThreeToThreeSequencedThroughputTest" Expanded="true" />
+    <Node UniqueName="[0-1131]disruptorpretest.V3._3._0.Translator" Expanded="true" />
+    <Node UniqueName="[0-1132]disruptorpretest.V3._3._0.Workhandler" Expanded="true" />
+    <Node UniqueName="[0-1103]disruptorpretest.V3._3._0.Workhandler.OneToThreeReleasingWorkerPoolThroughputTest" Expanded="true" />
+    <Node UniqueName="[0-1105]disruptorpretest.V3._3._0.Workhandler.OneToThreeWorkerPoolThroughputTest" Expanded="true" />
+    <Node UniqueName="[0-1107]disruptorpretest.V3._3._0.Workhandler.TwoToTwoWorkProcessorThroughputTest" Expanded="true" />
+  </Nodes>
+</VisualState>

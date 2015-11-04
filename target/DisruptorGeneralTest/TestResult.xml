@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="E:\第三方组件\B_并行框架\Disruptor-net-3.1.1\Disruptor -3.3.0 net 4.5\target\DisruptorGeneralTest\DisruptorGeneralTest.nunit" total="167" errors="0" failures="1" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2015-01-18" time="11:24:21">
+  <environment nunit-version="2.6.2.12296" clr-version="2.0.50727.5477" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="E:\第三方组件\B_并行框架\Disruptor-net-3.1.1\Disruptor -3.3.0 net 4.5\target\DisruptorGeneralTest" machine-name="NB0232" user="liguo" user-domain="NB0232" />
+  <culture-info current-culture="zh-CN" current-uiculture="zh-CN" />
+  <test-suite type="Project" name="E:\第三方组件\B_并行框架\Disruptor-net-3.1.1\Disruptor -3.3.0 net 4.5\target\DisruptorGeneralTest\DisruptorGeneralTest.nunit" executed="True" result="Failure" success="False" time="3.604" asserts="0">
+    <results>
+      <test-suite type="Assembly" name="E:\第三方组件\B_并行框架\Disruptor-net-3.1.1\Disruptor -3.3.0 net 4.5\target\DisruptorGeneralTest\DisruptorGeneralTest.dll" executed="True" result="Failure" success="False" time="3.604" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="Disruptor" executed="True" result="Success" success="True" time="0.172" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="Tests" executed="True" result="Success" success="True" time="0.172" asserts="0">
+                <results>
+                  <test-suite type="Namespace" name="Collections" executed="True" result="Success" success="True" time="0.140" asserts="0">
+                    <results>
+                      <test-suite type="TestFixture" name="HistogramTests" executed="True" result="Success" success="True" time="0.140" asserts="0">
+                        <results>
+                          <test-case name="Disruptor.Tests.Collections.HistogramTests.ShouldAddObservation" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                          <test-case name="Disruptor.Tests.Collections.HistogramTests.ShouldAddObservations" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                          <test-case name="Disruptor.Tests.Collections.HistogramTests.ShouldClearCounts" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+                          <test-case name="Disruptor.Tests.Collections.HistogramTests.ShouldConfirmIntervalsAreInitialised" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+                          <test-case name="Disruptor.Tests.Collections.HistogramTests.ShouldCorrectMeanForSkewInTopAndBottomPopulatedIntervals" executed="True" result="Success" success="True" time="0.062" asserts="1" />
+                          <test-case name="Disruptor.Tests.Collections.HistogramTests.ShouldCountTotalObservations" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                          <test-case name="Disruptor.Tests.Collections.HistogramTests.ShouldGetFourNinesUpperBound" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                          <test-case name="Disruptor.Tests.Collections.HistogramTests.ShouldGetMaxObservation" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                          <test-case name="Disruptor.Tests.Collections.HistogramTests.ShouldGetMeanObservation" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                          <test-case name="Disruptor.Tests.Collections.HistogramTests.ShouldGetMinAndMaxOfSingleObservation" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                          <test-case name="Disruptor.Tests.Collections.HistogramTests.ShouldGetMinObservation" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                          <test-case name="Disruptor.Tests.Collections.HistogramTests.ShouldGetTwoNinesUpperBound" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                          <test-case name="Disruptor.Tests.Collections.HistogramTests.ShouldNotAddObservation" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                          <test-case name="Disruptor.Tests.Collections.HistogramTests.ShouldSizeBasedOnBucketConfiguration" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                          <test-case name="Disruptor.Tests.Collections.HistogramTests.ShouldThrowExceptionWhenIntervalDoNotIncrease" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                          <test-case name="Disruptor.Tests.Collections.HistogramTests.ShouldThrowExceptionWhenIntervalLessThanOrEqualToZero" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                          <test-case name="Disruptor.Tests.Collections.HistogramTests.ShouldThrowExceptionWhenIntervalsDoNotMatch" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                          <test-case name="Disruptor.Tests.Collections.HistogramTests.ShouldToString" executed="True" result="Success" success="True" time="0.016" asserts="1" />
+                          <test-case name="Disruptor.Tests.Collections.HistogramTests.ShouldWalkIntervals" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="UtilTests" executed="True" result="Success" success="True" time="0.031" asserts="0">
+                    <results>
+                      <test-case name="Disruptor.Tests.UtilTests.ShouldReturnExactPowerOfTwo" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="Disruptor.Tests.UtilTests.ShouldReturnLongMaxWhenNoEventProcessors" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="Disruptor.Tests.UtilTests.ShouldReturnMinimumSequence" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="Disruptor.Tests.UtilTests.ShouldReturnNextPowerOfTwo" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="Namespace" name="DisruptorGeneralTest" executed="True" result="Failure" success="False" time="3.432" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="AggregateEventHandlerTests" executed="True" result="Success" success="True" time="0.016" asserts="0">
+                <results>
+                  <test-case name="DisruptorGeneralTest.AggregateEventHandlerTests.ShouldCallOnEvent" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="DisruptorGeneralTest.AggregateEventHandlerTests.ShouldCallOnShutdown" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="DisruptorGeneralTest.AggregateEventHandlerTests.ShouldCallOnStart" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="DisruptorGeneralTest.AggregateEventHandlerTests.ShouldHandleEmptyListOfEventHandlers" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="BatchEventProcessorTest" executed="True" result="Success" success="True" time="0.031" asserts="0">
+                <results>
+                  <test-case name="DisruptorGeneralTest.BatchEventProcessorTest.ShouldCallExceptionHandlerOnUncaughtException" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="DisruptorGeneralTest.BatchEventProcessorTest.ShouldCallMethodsInLifecycleOrder" executed="True" result="Success" success="True" time="0.016" asserts="1" />
+                  <test-case name="DisruptorGeneralTest.BatchEventProcessorTest.ShouldCallMethodsInLifecycleOrderForBatch" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="DisruptorGeneralTest.BatchEventProcessorTest.ShouldThrowExceptionOnSettingNullExceptionHandler" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="BusySpinWaitStrategyTest" executed="True" result="Success" success="True" time="0.062" asserts="0">
+                <results>
+                  <test-case name="DisruptorGeneralTest.BusySpinWaitStrategyTest.ShouldWaitForValue" executed="True" result="Success" success="True" time="0.062" asserts="1" />
+                </results>
+              </test-suite>
+              <test-suite type="Namespace" name="Dsl" executed="True" result="Success" success="True" time="0.000" asserts="0">
+                <results>
+                  <test-suite type="TestFixture" name="ConsumerRepositoryTest" executed="True" result="Success" success="True" time="0.000" asserts="0">
+                    <results>
+                      <test-case name="DisruptorGeneralTest.Dsl.ConsumerRepositoryTest.ShouldGetBarrierByHandler" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="EventPublisherTest" executed="True" result="Success" success="True" time="0.016" asserts="0">
+                <results>
+                  <test-case name="DisruptorGeneralTest.EventPublisherTest.ShouldPublishEvent" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                  <test-case name="DisruptorGeneralTest.EventPublisherTest.ShouldTryPublishEvent" executed="True" result="Success" success="True" time="0.000" asserts="65" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="EventTranslatorTest" executed="True" result="Success" success="True" time="0.000" asserts="0">
+                <results>
+                  <test-case name="DisruptorGeneralTest.EventTranslatorTest.ShouldTranslateOtherDataIntoAnEvent" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="FatalExceptionHandlerTest" executed="True" result="Success" success="True" time="0.000" asserts="0">
+                <results>
+                  <test-case name="DisruptorGeneralTest.FatalExceptionHandlerTest.ShouldHandleFatalException" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="FixedSequenceGroupTest" executed="True" result="Success" success="True" time="0.000" asserts="0">
+                <results>
+                  <test-case name="DisruptorGeneralTest.FixedSequenceGroupTest.ShouldReturnMinimumOf2Sequences" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="IgnoreExceptionHandlerTest" executed="True" result="Success" success="True" time="0.000" asserts="0">
+                <results>
+                  <test-case name="DisruptorGeneralTest.IgnoreExceptionHandlerTest.ShouldHandleAndIgnoreException" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="LifecycleAwareTest" executed="True" result="Success" success="True" time="0.000" asserts="0">
+                <results>
+                  <test-case name="DisruptorGeneralTest.LifecycleAwareTest.ShouldNotifyOfEventProcessorLifecycle" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="MultiProducerSequencerTest" executed="True" result="Success" success="True" time="0.000" asserts="0">
+                <results>
+                  <test-case name="DisruptorGeneralTest.MultiProducerSequencerTest.ShouldOnlyAllowMessagesToBeAvailableIfSpecificallyPublished" executed="True" result="Success" success="True" time="0.000" asserts="8" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="PhasedBackoffWaitStrategyTest" executed="True" result="Success" success="True" time="0.000" asserts="0">
+                <results>
+                  <test-case name="DisruptorGeneralTest.PhasedBackoffWaitStrategyTest.ShouldHandleImmediateSequenceChange" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                  <test-case name="DisruptorGeneralTest.PhasedBackoffWaitStrategyTest.ShouldHandleSequenceChangeWithOneMillisecondDelay" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                  <test-case name="DisruptorGeneralTest.PhasedBackoffWaitStrategyTest.ShouldHandleSequenceChangeWithTenMillisecondDelay" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                  <test-case name="DisruptorGeneralTest.PhasedBackoffWaitStrategyTest.ShouldHandleSequenceChangeWithTwoMillisecondDelay" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="RingBufferTest" executed="True" result="Success" success="True" time="0.250" asserts="0">
+                <results>
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldAddAndRemoveSequences" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldClaimAndGet" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldClaimAndGetInSeparateThread" description="申请在单独的线程中获取" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldClaimAndGetMultipleMessages" description="获取多个消息" executed="True" result="Success" success="True" time="0.000" asserts="33" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldHandleResetToAndNotWrapUnecessarilyMultiProducer" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldHandleResetToAndNotWrapUnecessarilySingleProducer" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsIfBatchIsLargerThanRingBuffer" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsITwoArgIfBatchSizeIsBiggerThanRingBuffer" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsOneArgIfBatchIsLargerThanRingBuffer" executed="True" result="Success" success="True" time="0.016" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsOneArgWhenBatchExtendsPastEndOfArray" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsOneArgWhenBatchSizeIs0" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsOneArgWhenBatchSizeIsNegative" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsOneArgWhenBatchStartsAtIsNegative" executed="True" result="Success" success="True" time="0.016" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsThreeArgIfBatchIsLargerThanRingBuffer" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsThreeArgWhenBatchExtendsPastEndOfArray" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsThreeArgWhenBatchSizeIs0" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsThreeArgWhenBatchSizeIsNegative" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsThreeArgWhenBatchStartsAtIsNegative" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsTwoArgWhenBatchExtendsPastEndOfArray" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsTwoArgWhenBatchSizeIs0" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsTwoArgWhenBatchSizeIsNegative" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsTwoArgWhenBatchStartsAtIsNegative" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsVarArgIfBatchIsLargerThanRingBuffer" description="不应该批量发布大于环形缓冲区大小的消息" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsVarArgWhenBatchExtendsPastEndOfArray" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsVarArgWhenBatchSizeIs0" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsVarArgWhenBatchSizeIsNegative" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsVarArgWhenBatchStartsAtIsNegative" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsWhenBatchExtendsPastEndOfArray" description="不应该批量发布超过事件源大小的事件" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsWhenBatchSizeIs0" description="不应该批量发布大小小于0的消息" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsWhenBatchSizeIsNegative" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotPublishEventsWhenBatchStartsAtIsNegative" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotTryPublishEventsOneArgWhenBatchExtendsPastEndOfArray" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotTryPublishEventsOneArgWhenBatchSizeIsNegative" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotTryPublishEventsOneArgWhenBatchStartsAtIsNegative" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotTryPublishEventsThreeArgWhenBatchExtendsPastEndOfArray" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotTryPublishEventsThreeArgWhenBatchSizeIsNegative" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotTryPublishEventsThreeArgWhenBatchStartsAtIsNegative" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotTryPublishEventsTwoArgWhenBatchExtendsPastEndOfArray" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotTryPublishEventsTwoArgWhenBatchSizeIsNegative" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotTryPublishEventsTwoArgWhenBatchStartsAtIsNegative" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotTryPublishEventsVarArgWhenBatchExtendsPastEndOfArray" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotTryPublishEventsVarArgWhenBatchSizeIsNegative" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotTryPublishEventsVarArgWhenBatchStartsAtIsNegative" executed="True" result="Success" success="True" time="0.016" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotTryPublishEventsWhenBatchExtendsPastEndOfArray" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotTryPublishEventsWhenBatchSizeIsNegative" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldNotTryPublishEventsWhenBatchStartsAtIsNegative" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldPreventPublishersOvertakingEventProcessorWrapPoint" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldPreventWrapping" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldPublishEvent" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldPublishEventOneArg" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldPublishEvents" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldPublishEventsOneArg" executed="True" result="Success" success="True" time="0.016" asserts="5" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldPublishEventsOneArgBatchSizeOfOne" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldPublishEventsOneArgWithinBatch" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldPublishEventsThreeArg" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldPublishEventsThreeArgBatchSizeOfOne" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldPublishEventsThreeArgWithinBatch" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldPublishEventsTwoArg" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldPublishEventsTwoArgWithBatchSizeOfOne" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldPublishEventsTwoArgWithinBatch" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldPublishEventsVarArg" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldPublishEventsVarArgBatchSizeOfOne" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldPublishEventsVarArgWithinBatch" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldPublishEventsWithBatchSizeOfOne" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldPublishEventsWithinBatch" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldPublishEventThreeArg" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldPublishEventTwoArg" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldPublishEventVarArg" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldThrowExceptionIfBufferIsFull" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="DisruptorGeneralTest.RingBufferTest.ShouldWrap" executed="True" result="Success" success="True" time="0.000" asserts="33" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="SequenceBarrierTest" executed="True" result="Success" success="True" time="1.030" asserts="0">
+                <results>
+                  <test-case name="DisruptorGeneralTest.SequenceBarrierTest.ShouldInterruptDuringBusySpin" executed="True" result="Success" success="True" time="1.014" asserts="1" />
+                  <test-case name="DisruptorGeneralTest.SequenceBarrierTest.ShouldSetAndClearAlertStatus" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+                  <test-case name="DisruptorGeneralTest.SequenceBarrierTest.ShouldWaitForWorkCompleteWhereAllWorkersAreBlockedOnRingBuffer" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                  <test-case name="DisruptorGeneralTest.SequenceBarrierTest.ShouldWaitForWorkCompleteWhereCompleteWorkThresholdIsAhead" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                  <test-case name="DisruptorGeneralTest.SequenceBarrierTest.ShouldWaitForWorkCompleteWhereCompleteWorkThresholdIsBehind" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="SequenceGroupTest" executed="True" result="Success" success="True" time="0.047" asserts="0">
+                <results>
+                  <test-case name="DisruptorGeneralTest.SequenceGroupTest.ShouldAddOneSequenceToGroup" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                  <test-case name="DisruptorGeneralTest.SequenceGroupTest.ShouldAddWhileRunning" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                  <test-case name="DisruptorGeneralTest.SequenceGroupTest.ShouldNotFailIfTryingToRemoveNotExistingSequence" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="DisruptorGeneralTest.SequenceGroupTest.ShouldRemoveSequenceFromGroup" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.SequenceGroupTest.ShouldRemoveSequenceFromGroupWhereItBeenAddedMultipleTimes" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="DisruptorGeneralTest.SequenceGroupTest.ShouldReportSizeOfGroup" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                  <test-case name="DisruptorGeneralTest.SequenceGroupTest.ShouldReportTheMinimumSequenceForGroupOfTwo" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                  <test-case name="DisruptorGeneralTest.SequenceGroupTest.ShouldReturnMaxSequenceWhenEmptyGroup" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                  <test-case name="DisruptorGeneralTest.SequenceGroupTest.ShouldSetGroupSequenceToSameValue" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="SequenceReportingCallbackTest" executed="True" result="Success" success="True" time="0.000" asserts="0">
+                <results>
+                  <test-case name="DisruptorGeneralTest.SequenceReportingCallbackTest.ShouldReportProgressByUpdatingSequenceViaCallback" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+                </results>
+              </test-suite>
+              <test-suite type="ParameterizedFixture" name="SequencerTest" executed="True" result="Success" success="True" time="0.187" asserts="0">
+                <results>
+                  <test-suite type="TestFixture" name="SequencerTest(MULTI)" executed="True" result="Success" success="True" time="0.094" asserts="0">
+                    <results>
+                      <test-case name="DisruptorGeneralTest.SequencerTest(MULTI).ShouldBatchClaim" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(MULTI).ShouldCalculateRemainingCapacity" executed="True" result="Success" success="True" time="0.000" asserts="16" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(MULTI).ShouldClaimSpecificSequence" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(MULTI).ShouldHoldUpPublisherWhenBufferIsFull" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(MULTI).ShouldIndicateHasAvailableCapacity" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(MULTI).ShouldIndicateNoAvailableCapacity" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(MULTI).ShouldNotAllowBulkNextLessThanZero" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(MULTI).ShouldNotAllowBulkTryNextLessThanZero" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(MULTI).ShouldNotAllowBulkTryNextOfZero" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(MULTI).ShouldNotBeAvailableUntilPublished" executed="True" result="Success" success="True" time="0.000" asserts="13" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(MULTI).ShouldNotifyWaitStrategyOnPublish" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(MULTI).ShouldNotifyWaitStrategyOnPublishBatch" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(MULTI).ShouldStartWithInitialValue" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(MULTI).ShouldThrowInsufficientCapacityExceptionWhenSequencerIsFull" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(MULTI).ShouldTryNext" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(MULTI).ShouldWaitOnPublication" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="SequencerTest(SINGLE)" executed="True" result="Success" success="True" time="0.078" asserts="0">
+                    <results>
+                      <test-case name="DisruptorGeneralTest.SequencerTest(SINGLE).ShouldBatchClaim" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(SINGLE).ShouldCalculateRemainingCapacity" executed="True" result="Success" success="True" time="0.000" asserts="16" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(SINGLE).ShouldClaimSpecificSequence" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(SINGLE).ShouldHoldUpPublisherWhenBufferIsFull" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(SINGLE).ShouldIndicateHasAvailableCapacity" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(SINGLE).ShouldIndicateNoAvailableCapacity" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(SINGLE).ShouldNotAllowBulkNextLessThanZero" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(SINGLE).ShouldNotAllowBulkTryNextLessThanZero" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(SINGLE).ShouldNotAllowBulkTryNextOfZero" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(SINGLE).ShouldNotBeAvailableUntilPublished" executed="True" result="Success" success="True" time="0.000" asserts="13" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(SINGLE).ShouldNotifyWaitStrategyOnPublish" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(SINGLE).ShouldNotifyWaitStrategyOnPublishBatch" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(SINGLE).ShouldStartWithInitialValue" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(SINGLE).ShouldThrowInsufficientCapacityExceptionWhenSequencerIsFull" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(SINGLE).ShouldTryNext" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                      <test-case name="DisruptorGeneralTest.SequencerTest(SINGLE).ShouldWaitOnPublication" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="ShutdownOnFatalExceptionTest" executed="True" result="Failure" success="False" time="0.000" asserts="0">
+                <results>
+                  <test-case name="DisruptorGeneralTest.ShutdownOnFatalExceptionTest.ShouldShutdownGracefulEvenWithFatalExceptionHandler" executed="True" result="Failure" success="False" time="0.000" asserts="0">
+                    <properties>
+                      <property name="Timeout" value="1000" />
+                    </properties>
+                    <failure>
+                      <message><![CDATA[System.ApplicationException was expected]]></message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="SleepingWaitStrategyTest" executed="True" result="Success" success="True" time="0.062" asserts="0">
+                <results>
+                  <test-case name="DisruptorGeneralTest.SleepingWaitStrategyTest.ShouldWaitForValue" executed="True" result="Success" success="True" time="0.062" asserts="1" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="WorkerPoolTest" executed="True" result="Success" success="True" time="1.529" asserts="0">
+                <results>
+                  <test-case name="DisruptorGeneralTest.WorkerPoolTest.ShouldProcessEachMessageByOnlyOneWorker" executed="True" result="Success" success="True" time="0.515" asserts="2" />
+                  <test-case name="DisruptorGeneralTest.WorkerPoolTest.ShouldProcessOnlyOnceItHasBeenPublished" executed="True" result="Success" success="True" time="1.014" asserts="2" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="YieldingWaitStrategyTest" executed="True" result="Success" success="True" time="0.062" asserts="0">
+                <results>
+                  <test-case name="DisruptorGeneralTest.YieldingWaitStrategyTest.ShouldWaitForValue" executed="True" result="Success" success="True" time="0.062" asserts="1" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

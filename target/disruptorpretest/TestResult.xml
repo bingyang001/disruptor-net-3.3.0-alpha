@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="E:\第三方组件\B_并行框架\Disruptor-net-3.1.1\Disruptor -3.3.0 net 4.5\target\disruptorpretest\disruptorpretest.nunit" total="1" errors="1" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2015-07-20" time="23:39:26">
+  <environment nunit-version="2.6.2.12296" clr-version="2.0.50727.5485" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="E:\第三方组件\B_并行框架\Disruptor-net-3.1.1\Disruptor -3.3.0 net 4.5\target\disruptorpretest" machine-name="NB0232" user="liguo" user-domain="NB0232" />
+  <culture-info current-culture="zh-CN" current-uiculture="zh-CN" />
+  <test-suite type="Project" name="E:\第三方组件\B_并行框架\Disruptor-net-3.1.1\Disruptor -3.3.0 net 4.5\target\disruptorpretest\disruptorpretest.nunit" executed="True" result="Failure" success="False" time="166.692" asserts="0">
+    <results>
+      <test-suite type="Assembly" name="E:\第三方组件\B_并行框架\Disruptor-net-3.1.1\Disruptor -3.3.0 net 4.5\target\disruptorpretest\disruptorpretest.exe" executed="True" result="Failure" success="False" time="166.692" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="disruptorpretest" executed="True" result="Failure" success="False" time="166.692" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="V3" executed="True" result="Failure" success="False" time="166.691" asserts="0">
+                <results>
+                  <test-suite type="Namespace" name="_3" executed="True" result="Failure" success="False" time="166.691" asserts="0">
+                    <results>
+                      <test-suite type="Namespace" name="_0" executed="True" result="Failure" success="False" time="166.691" asserts="0">
+                        <results>
+                          <test-suite type="Namespace" name="Sequenced" executed="True" result="Failure" success="False" time="166.691" asserts="0">
+                            <results>
+                              <test-suite type="TestFixture" name="OneToThreePipelineSequencedThroughputTest" executed="True" result="Failure" success="False" time="166.691" asserts="0">
+                                <results>
+                                  <test-case name="disruptorpretest.V3._3._0.Sequenced.OneToThreePipelineSequencedThroughputTest.AbstractPerfTestQueueVsDisruptor.TestImplementations" executed="True" result="Error" success="False" time="161.668" asserts="0">
+                                    <failure>
+                                      <message><![CDATA[System.IndexOutOfRangeException : 索引超出了数组界限。]]></message>
+                                      <stack-trace><![CDATA[在 Disruptor.RingBuffer`1.get_Item(Int64 sequence) 位置 e:\第三方组件\B_并行框架\Disruptor-net-3.1.1\Disruptor -3.3.0 net 4.5\src\Disruptor\Core\RingBuffer.cs:行号 138
+在 disruptorpretest.V3._3._0.Sequenced.OneToThreePipelineSequencedThroughputTest.RunDisruptorPass() 位置 e:\第三方组件\B_并行框架\Disruptor-net-3.1.1\Disruptor -3.3.0 net 4.5\perftest\disruptorpretest\V3.3.0\Sequenced\OneToThreePipelineSequencedThroughputTest.cs:行号 126
+在 disruptorpretest.AbstractPerfTestQueueVsDisruptor.TestImplementations() 位置 e:\第三方组件\B_并行框架\Disruptor-net-3.1.1\Disruptor -3.3.0 net 4.5\perftest\disruptorpretest\V3.3.0\Disruptor\AbstractPerfTestQueueVsDisruptor.cs:行号 88
+]]></stack-trace>
+                                    </failure>
+                                  </test-case>
+                                </results>
+                              </test-suite>
+                            </results>
+                          </test-suite>
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="true">
+  <TopNode>[0-1000]E:\第三方组件\B_并行框架\Disruptor-net-3.1.1\Disruptor -3.3.0 net 4.5\target\Atomic.Tests\Atomic.Tests.nunit</TopNode>
+  <SelectedNode>[0-1153]Atomic.Tests.VolatileLongTests.WriteFullFenceChangesInitialValue(100000000)</SelectedNode>
+  <ExcludeCategories>false</ExcludeCategories>
+  <Nodes>
+    <Node UniqueName="[0-1000]E:\第三方组件\B_并行框架\Disruptor-net-3.1.1\Disruptor -3.3.0 net 4.5\target\Atomic.Tests\Atomic.Tests.nunit" Expanded="true" />
+    <Node UniqueName="[0-1206]E:\第三方组件\B_并行框架\Disruptor-net-3.1.1\Disruptor -3.3.0 net 4.5\target\Atomic.Tests\Atomic.Tests.dll" Expanded="true" />
+    <Node UniqueName="[0-1207]Atomic" Expanded="true" />
+    <Node UniqueName="[0-1208]Atomic.Tests" Expanded="true" />
+    <Node UniqueName="[0-1145]Atomic.Tests.VolatileLongTests" Expanded="true" />
+    <Node UniqueName="[0-1154]Atomic.Tests.VolatileLongTests.WriteCompilerOnlyFenceChangesInitialValue" Expanded="true" />
+    <Node UniqueName="[0-1152]Atomic.Tests.VolatileLongTests.WriteFullFenceChangesInitialValue" Expanded="true" />
+    <Node UniqueName="[0-1153]Atomic.Tests.VolatileLongTests.WriteFullFenceChangesInitialValue(100000000)" Checked="true" />
+    <Node UniqueName="[0-1150]Atomic.Tests.VolatileLongTests.WriteReleaseFenceChangesInitialValue" Expanded="true" />
+    <Node UniqueName="[0-1156]Atomic.Tests.VolatileLongTests.WriteUnfencedInitialValue" Expanded="true" />
+  </Nodes>
+</VisualState>

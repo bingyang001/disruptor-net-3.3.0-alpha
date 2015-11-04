@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6A440F11-FBB3-4145-89B5-CAFA1497426F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>mmfileTest</RootNamespace>
+    <AssemblyName>mmfileTest</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="SBE">
+      <HintPath>..\packages\Adaptive.SBE.1.0.0.112\lib\net40\SBE.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\packages\Adaptive.SBE.1.0.0.112\sample\output\BooleanType.cs">
+      <Link>BooleanType.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\Adaptive.SBE.1.0.0.112\sample\output\Car.cs">
+      <Link>Car.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\Adaptive.SBE.1.0.0.112\sample\output\Engine.cs">
+      <Link>Engine.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\Adaptive.SBE.1.0.0.112\sample\output\GroupSizeEncoding.cs">
+      <Link>GroupSizeEncoding.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\Adaptive.SBE.1.0.0.112\sample\output\MessageHeader.cs">
+      <Link>MessageHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\Adaptive.SBE.1.0.0.112\sample\output\MetaAttribute.cs">
+      <Link>MetaAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\Adaptive.SBE.1.0.0.112\sample\output\Model.cs">
+      <Link>Model.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\Adaptive.SBE.1.0.0.112\sample\output\OptionalExtras.cs">
+      <Link>OptionalExtras.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\Adaptive.SBE.1.0.0.112\sample\output\VarDataEncoding.cs">
+      <Link>VarDataEncoding.cs</Link>
+    </Compile>
+    <Compile Include="A.cs" />
+    <Compile Include="EndianessConverterTests.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

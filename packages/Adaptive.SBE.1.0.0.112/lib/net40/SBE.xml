@@ -1,0 +1,1823 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SBE</name>
+    </assembly>
+    <members>
+        <member name="T:Adaptive.SimpleBinaryEncoding.ByteOrder">
+            <summary>
+            Represents the order of bytes (Endianness) used to store data.
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ByteOrder.LittleEndian">
+            <summary>
+            Little endian
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ByteOrder.BigEndian">
+            <summary>
+            Big endian
+            </summary>
+        </member>
+        <member name="T:Adaptive.SimpleBinaryEncoding.DirectBuffer">
+            <summary>
+            Provides access to read and write simple data types to and from a byte array in the SBE format.
+            </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.#ctor(System.Byte[])">
+            <summary>
+            Attach a view to a byte[] for providing direct access.
+            </summary>
+            <param name="buffer">buffer to which the view is attached.</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.#ctor(System.Byte[],Adaptive.SimpleBinaryEncoding.DirectBuffer.BufferOverflowDelegate)">
+            <summary>
+            Attach a view to a byte[] for providing direct access
+            </summary>
+            <param name="buffer">buffer to which the view is attached.</param>
+            <param name="bufferOverflow">delegate to allow reallocation of buffer</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.#ctor(System.Byte*,System.Int32)">
+            <summary>
+            Attach a view to an unmanaged buffer owned by external code
+            </summary>
+            <param name="pBuffer">Unmanaged byte buffer</param>
+            <param name="bufferLength">Length of the buffer</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.#ctor(System.Byte*,System.Int32,Adaptive.SimpleBinaryEncoding.DirectBuffer.BufferOverflowDelegate)">
+            <summary>
+            Attach a view to an unmanaged buffer owned by external code
+            </summary>
+            <param name="pBuffer">Unmanaged byte buffer</param>
+            <param name="bufferLength">Length of the buffer</param>
+            <param name="bufferOverflow">delegate to allow reallocation of buffer</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.#ctor">
+            <summary>
+            Creates a DirectBuffer that can later be wrapped
+            </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.#ctor(Adaptive.SimpleBinaryEncoding.DirectBuffer.BufferOverflowDelegate)">
+            <summary>
+            Creates a DirectBuffer that can later be wrapped
+            </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Wrap(System.Byte[])">
+            <summary>
+            Recycles an existing <see cref="T:Adaptive.SimpleBinaryEncoding.DirectBuffer"/>
+            </summary>
+            <param name="byteArray">The byte array that will act as the backing buffer.</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Wrap(System.Byte*,System.Int32)">
+            <summary>
+            Recycles an existing <see cref="T:Adaptive.SimpleBinaryEncoding.DirectBuffer"/> from an unmanaged byte buffer owned by external code
+            </summary>
+            <param name="pBuffer">Unmanaged byte buffer</param>
+            <param name="bufferLength">Length of the buffer</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.CheckLimit(System.Int32)">
+            <summary>
+            Check that a given limit is not greater than the capacity of a buffer from a given offset.
+            </summary>
+            <param name="limit">limit access is required to.</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.CharGet(System.Int32)">
+            <summary>
+            Gets the <see cref="T:System.Byte"/> value at a given index.
+            </summary>
+            <param name="index">index in bytes from which to get.</param>
+            <returns>the value at a given index.</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.CharPut(System.Int32,System.Byte)">
+            <summary>
+            Writes a <see cref="T:System.Byte"/> value to a given index.
+            </summary>
+            <param name="index">index in bytes for where to put.</param>
+            <param name="value">value to be written</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Int8Get(System.Int32)">
+            <summary>
+            Gets the <see cref="T:System.SByte"/> value at a given index.
+            </summary>
+            <param name="index"> index in bytes from which to get.</param>
+            <returns>the value at a given index.</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Int8Put(System.Int32,System.SByte)">
+            <summary>
+            Writes a <see cref="T:System.SByte"/> value to a given index.
+            </summary>
+            <param name="index">index in bytes for where to put.</param>
+            <param name="value">value to be written</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Uint8Get(System.Int32)">
+            <summary>
+            Gets the <see cref="T:System.Byte"/> value at a given index.
+            </summary>
+            <param name="index"> index in bytes from which to get.</param>
+            <returns>the value at a given index.</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Uint8Put(System.Int32,System.Byte)">
+            <summary>
+            Writes a <see cref="T:System.Byte"/> value to a given index.
+            </summary>
+            <param name="index">index in bytes for where to put.</param>
+            <param name="value">value to be written</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Int16GetBigEndian(System.Int32)">
+            <summary>
+            Gets the <see cref="T:System.Int16"/> value at a given index.
+            </summary>
+            <param name="index"> index in bytes from which to get.</param>
+            <returns>the value at a given index.</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Int16PutBigEndian(System.Int32,System.Int16)">
+            <summary>
+            Writes a <see cref="T:System.Int16"/> value to a given index.
+            </summary>
+            <param name="index">index in bytes for where to put.</param>
+            <param name="value">value to be written</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Int32GetBigEndian(System.Int32)">
+            <summary>
+            Gets the <see cref="T:System.Int32"/> value at a given index.
+            </summary>
+            <param name="index"> index in bytes from which to get.</param>
+            <returns>the value at a given index.</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Int32PutBigEndian(System.Int32,System.Int32)">
+            <summary>
+            Writes a <see cref="T:System.Int32"/> value to a given index.
+            </summary>
+            <param name="index">index in bytes for where to put.</param>
+            <param name="value">value to be written</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Int64GetBigEndian(System.Int32)">
+            <summary>
+            Gets the <see cref="T:System.Int64"/> value at a given index.
+            </summary>
+            <param name="index"> index in bytes from which to get.</param>
+            <returns>the value at a given index.</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Int64PutBigEndian(System.Int32,System.Int64)">
+            <summary>
+            Writes a <see cref="T:System.Int64"/> value to a given index.
+            </summary>
+            <param name="index">index in bytes for where to put.</param>
+            <param name="value">value to be written</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Uint16GetBigEndian(System.Int32)">
+            <summary>
+            Gets the <see cref="T:System.UInt16"/> value at a given index.
+            </summary>
+            <param name="index"> index in bytes from which to get.</param>
+            <returns>the value at a given index.</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Uint16PutBigEndian(System.Int32,System.UInt16)">
+            <summary>
+            Writes a <see cref="T:System.UInt16"/> value to a given index.
+            </summary>
+            <param name="index">index in bytes for where to put.</param>
+            <param name="value">value to be written</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Uint32GetBigEndian(System.Int32)">
+            <summary>
+            Gets the <see cref="T:System.UInt32"/> value at a given index.
+            </summary>
+            <param name="index"> index in bytes from which to get.</param>
+            <returns>the value at a given index.</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Uint32PutBigEndian(System.Int32,System.UInt32)">
+            <summary>
+            Writes a <see cref="T:System.UInt32"/> value to a given index.
+            </summary>
+            <param name="index">index in bytes for where to put.</param>
+            <param name="value">value to be written</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Uint64GetBigEndian(System.Int32)">
+            <summary>
+            Gets the <see cref="T:System.UInt64"/> value at a given index.
+            </summary>
+            <param name="index"> index in bytes from which to get.</param>
+            <returns>the value at a given index.</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Uint64PutBigEndian(System.Int32,System.UInt64)">
+            <summary>
+            Writes a <see cref="T:System.UInt64"/> value to a given index.
+            </summary>
+            <param name="index">index in bytes for where to put.</param>
+            <param name="value">value to be written</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.FloatGetBigEndian(System.Int32)">
+            <summary>
+            Gets the <see cref="T:System.Single"/> value at a given index.
+            </summary>
+            <param name="index"> index in bytes from which to get.</param>
+            <returns>the value at a given index.</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.FloatPutBigEndian(System.Int32,System.Single)">
+            <summary>
+            Writes a <see cref="T:System.Single"/> value to a given index.
+            </summary>
+            <param name="index">index in bytes for where to put.</param>
+            <param name="value">value to be written</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.DoubleGetBigEndian(System.Int32)">
+            <summary>
+            Gets the <see cref="T:System.Double"/> value at a given index.
+            </summary>
+            <param name="index"> index in bytes from which to get.</param>
+            <returns>the value at a given index.</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.DoublePutBigEndian(System.Int32,System.Double)">
+            <summary>
+            Writes a <see cref="T:System.Double"/> value to a given index.
+            </summary>
+            <param name="index">index in bytes for where to put.</param>
+            <param name="value">value to be written</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Int16GetLittleEndian(System.Int32)">
+            <summary>
+            Gets the <see cref="T:System.Int16"/> value at a given index.
+            </summary>
+            <param name="index"> index in bytes from which to get.</param>
+            <returns>the value at a given index.</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Int16PutLittleEndian(System.Int32,System.Int16)">
+            <summary>
+            Writes a <see cref="T:System.Int16"/> value to a given index.
+            </summary>
+            <param name="index">index in bytes for where to put.</param>
+            <param name="value">value to be written</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Int32GetLittleEndian(System.Int32)">
+            <summary>
+            Gets the <see cref="T:System.Int32"/> value at a given index.
+            </summary>
+            <param name="index"> index in bytes from which to get.</param>
+            <returns>the value at a given index.</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Int32PutLittleEndian(System.Int32,System.Int32)">
+            <summary>
+            Writes a <see cref="T:System.Int32"/> value to a given index.
+            </summary>
+            <param name="index">index in bytes for where to put.</param>
+            <param name="value">value to be written</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Int64GetLittleEndian(System.Int32)">
+            <summary>
+            Gets the <see cref="T:System.Int64"/> value at a given index.
+            </summary>
+            <param name="index"> index in bytes from which to get.</param>
+            <returns>the value at a given index.</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Int64PutLittleEndian(System.Int32,System.Int64)">
+            <summary>
+            Writes a <see cref="T:System.Int64"/> value to a given index.
+            </summary>
+            <param name="index">index in bytes for where to put.</param>
+            <param name="value">value to be written</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Uint16GetLittleEndian(System.Int32)">
+            <summary>
+            Gets the <see cref="T:System.UInt16"/> value at a given index.
+            </summary>
+            <param name="index"> index in bytes from which to get.</param>
+            <returns>the value at a given index.</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Uint16PutLittleEndian(System.Int32,System.UInt16)">
+            <summary>
+            Writes a <see cref="T:System.UInt16"/> value to a given index.
+            </summary>
+            <param name="index">index in bytes for where to put.</param>
+            <param name="value">value to be written</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Uint32GetLittleEndian(System.Int32)">
+            <summary>
+            Gets the <see cref="T:System.UInt32"/> value at a given index.
+            </summary>
+            <param name="index"> index in bytes from which to get.</param>
+            <returns>the value at a given index.</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Uint32PutLittleEndian(System.Int32,System.UInt32)">
+            <summary>
+            Writes a <see cref="T:System.UInt32"/> value to a given index.
+            </summary>
+            <param name="index">index in bytes for where to put.</param>
+            <param name="value">value to be written</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Uint64GetLittleEndian(System.Int32)">
+            <summary>
+            Gets the <see cref="T:System.UInt64"/> value at a given index.
+            </summary>
+            <param name="index"> index in bytes from which to get.</param>
+            <returns>the value at a given index.</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Uint64PutLittleEndian(System.Int32,System.UInt64)">
+            <summary>
+            Writes a <see cref="T:System.UInt64"/> value to a given index.
+            </summary>
+            <param name="index">index in bytes for where to put.</param>
+            <param name="value">value to be written</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.FloatGetLittleEndian(System.Int32)">
+            <summary>
+            Gets the <see cref="T:System.Single"/> value at a given index.
+            </summary>
+            <param name="index"> index in bytes from which to get.</param>
+            <returns>the value at a given index.</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.FloatPutLittleEndian(System.Int32,System.Single)">
+            <summary>
+            Writes a <see cref="T:System.Single"/> value to a given index.
+            </summary>
+            <param name="index">index in bytes for where to put.</param>
+            <param name="value">value to be written</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.DoubleGetLittleEndian(System.Int32)">
+            <summary>
+            Gets the <see cref="T:System.Double"/> value at a given index.
+            </summary>
+            <param name="index"> index in bytes from which to get.</param>
+            <returns>the value at a given index.</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.DoublePutLittleEndian(System.Int32,System.Double)">
+            <summary>
+            Writes a <see cref="T:System.Double"/> value to a given index.
+            </summary>
+            <param name="index">index in bytes for where to put.</param>
+            <param name="value">value to be written</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.GetBytes(System.Int32,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Copies a range of bytes from the underlying into a supplied byte array.
+            </summary>
+            <param name="index">index  in the underlying buffer to start from.</param>
+            <param name="destination">array into which the bytes will be copied.</param>
+            <param name="offsetDestination">offset in the supplied buffer to start the copy</param>
+            <param name="length">length of the supplied buffer to use.</param>
+            <returns>count of bytes copied.</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.SetBytes(System.Int32,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Writes a byte array into the underlying buffer.
+            </summary>
+            <param name="index">index  in the underlying buffer to start from.</param>
+            <param name="src">source byte array to be copied to the underlying buffer.</param>
+            <param name="offset">offset in the supplied buffer to begin the copy.</param>
+            <param name="length">length of the supplied buffer to copy.</param>
+            <returns>count of bytes copied.</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.DirectBuffer.Finalize">
+            <summary>
+            Destructor for <see cref="T:Adaptive.SimpleBinaryEncoding.DirectBuffer"/>
+            </summary>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.DirectBuffer.Capacity">
+            <summary>
+            Capacity of the underlying buffer
+            </summary>
+        </member>
+        <member name="T:Adaptive.SimpleBinaryEncoding.DirectBuffer.BufferOverflowDelegate">
+            <summary>
+            Delegate invoked if buffer size is too small. 
+            </summary>
+            <param name="existingBufferSize"></param>
+            <param name="requestedBufferSize"></param>
+            <returns>New buffer, or null if reallocation is not possible</returns>
+        </member>
+        <member name="T:Adaptive.SimpleBinaryEncoding.EndianessConverter">
+            <summary>
+            Utility class to manipulate endianess 
+            </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.EndianessConverter.ApplyInt16(Adaptive.SimpleBinaryEncoding.ByteOrder,System.Int16)">
+            <summary>
+            Applies the specified endianess to an int16 (reverse bytes if input endianess is different from system's endianess)
+            </summary>
+            <param name="byteOrder">the endianess to apply</param>
+            <param name="value">the value to be converted</param>
+            <returns>The value with applied endainess</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.EndianessConverter.ApplyUint16(Adaptive.SimpleBinaryEncoding.ByteOrder,System.UInt16)">
+            <summary>
+            Applies the specified endianess to an uint16 (reverse bytes if input endianess is different from system's endianess)
+            </summary>
+            <param name="byteOrder">the endianess to apply</param>
+            <param name="value">the value to be converted</param>
+            <returns>The value with applied endainess</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.EndianessConverter.ApplyInt32(Adaptive.SimpleBinaryEncoding.ByteOrder,System.Int32)">
+            <summary>
+            Applies the specified endianess to an int32 (reverse bytes if input endianess is different from system's endianess)
+            </summary>
+            <param name="byteOrder">the endianess to apply</param>
+            <param name="value">the value to be converted</param>
+            <returns>The value with applied endainess</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.EndianessConverter.ApplyUint32(Adaptive.SimpleBinaryEncoding.ByteOrder,System.UInt32)">
+            <summary>
+            Applies the specified endianess to an uint32 (reverse bytes if input endianess is different from system's endianess)
+            </summary>
+            <param name="byteOrder">the endianess to apply</param>
+            <param name="value">the value to be converted</param>
+            <returns>The value with applied endainess</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.EndianessConverter.ApplyUint64(Adaptive.SimpleBinaryEncoding.ByteOrder,System.UInt64)">
+            <summary>
+            Applies the specified endianess to an uint64 (reverse bytes if input endianess is different from system's endianess)
+            </summary>
+            <param name="byteOrder">the endianess to apply</param>
+            <param name="value">the value to be converted</param>
+            <returns>The value with applied endainess</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.EndianessConverter.ApplyInt64(Adaptive.SimpleBinaryEncoding.ByteOrder,System.Int64)">
+            <summary>
+            Applies the specified endianess to an int64 (reverse bytes if input endianess is different from system's endianess)
+            </summary>
+            <param name="byteOrder">the endianess to apply</param>
+            <param name="value">the value to be converted</param>
+            <returns>The value with applied endainess</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.EndianessConverter.ApplyDouble(Adaptive.SimpleBinaryEncoding.ByteOrder,System.Double)">
+            <summary>
+            Applies the specified endianess to a double (reverse bytes if input endianess is different from system's endianess)
+            </summary>
+            <param name="byteOrder">the endianess to apply</param>
+            <param name="value">the value to be converted</param>
+            <returns>The value with applied endainess</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.EndianessConverter.ApplyFloat(Adaptive.SimpleBinaryEncoding.ByteOrder,System.Single)">
+            <summary>
+            Applies the specified endianess to an float (reverse bytes if input endianess is different from system's endianess)
+            </summary>
+            <param name="byteOrder">the endianess to apply</param>
+            <param name="value">the value to be converted</param>
+            <returns>The value with applied endainess</returns>
+        </member>
+        <member name="T:Adaptive.SimpleBinaryEncoding.ir.Encoding">
+            <summary>
+            Optional encoding settings that can be associated with <seealso cref="T:Adaptive.SimpleBinaryEncoding.ir.Token"/>s.
+            </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.ir.Encoding.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Adaptive.SimpleBinaryEncoding.ir.Encoding"/>
+            </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.ir.Encoding.#ctor(Adaptive.SimpleBinaryEncoding.PrimitiveType,Adaptive.SimpleBinaryEncoding.ir.Presence,Adaptive.SimpleBinaryEncoding.ByteOrder,Adaptive.SimpleBinaryEncoding.PrimitiveValue,Adaptive.SimpleBinaryEncoding.PrimitiveValue,Adaptive.SimpleBinaryEncoding.PrimitiveValue,Adaptive.SimpleBinaryEncoding.PrimitiveValue,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of <see cref="T:Adaptive.SimpleBinaryEncoding.ir.Encoding"/>
+            </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.ir.Encoding.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>
+            A string that represents the current object.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Encoding.PrimitiveType">
+            <summary>
+            The <seealso cref="P:Adaptive.SimpleBinaryEncoding.ir.Encoding.PrimitiveType"/> of this encoding.
+            </summary>
+            <value>the <see cref="P:Adaptive.SimpleBinaryEncoding.ir.Encoding.PrimitiveType"/> of this encoding.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Encoding.ByteOrder">
+            <summary>
+            The <seealso cref="P:Adaptive.SimpleBinaryEncoding.ir.Encoding.ByteOrder"/> for this encoding.
+            </summary>
+            <value>the <see cref="P:Adaptive.SimpleBinaryEncoding.ir.Encoding.ByteOrder"/> for this encoding.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Encoding.MinValue">
+            <summary>
+            The min value for the token or null if not set.
+            </summary>
+            <value>the minValue for the token or null if not set.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Encoding.MaxValue">
+            <summary>
+            The max value for the token or null if not set.
+            </summary>
+            <value>the maxValue for the token or null if not set.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Encoding.NullValue">
+            <summary>
+            The null value for the token or null if not set.
+            </summary>
+            <value>the nullValue for the token or null if not set.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Encoding.ConstValue">
+            <summary>
+            The constant value for the token or null if not set.
+            </summary>
+            <value>the constant value for the token or null if not set.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Encoding.Presence">
+            <summary>
+            Indicates the presence status of a field in a message.
+            </summary>
+            <value>indicates the presence status of a field in a message.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Encoding.ApplicableNullVal">
+            <summary>
+            The most applicable null value for the encoded type.
+            </summary>
+            <value>most applicable null value for the encoded type.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Encoding.ApplicableMinVal">
+            <summary>
+            The most applicable min value for the encoded type.
+            </summary>
+            <value>most applicable min value for the encoded type.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Encoding.ApplicableMaxVal">
+            <summary>
+            The most applicable max value for the encoded type.
+            </summary>
+            <value>most applicable max value for the encoded type.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Encoding.CharacterEncoding">
+            <summary>
+            The character encoding for the token or null if not set.
+            </summary>
+            <value>the character encoding for the token or null if not set.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Encoding.Epoch">
+            <summary>
+            The epoch from which a timestamp is offset. The default is "unix".
+            </summary>
+            <value>the epoch from which a timestamp is offset.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Encoding.TimeUnit">
+            <summary>
+            The time unit of the timestamp.
+            </summary>
+            <value>the time unit of the timestamp.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Encoding.SemanticType">
+            <summary>
+            The semantic type of an encoding which can have relevance to the application layer.
+            </summary>
+            <value>semantic type of an encoding which can have relevance to the application layer.</value>
+        </member>
+        <member name="T:Adaptive.SimpleBinaryEncoding.ir.Encoding.Builder">
+            <summary>
+            Builder to make <seealso cref="T:Adaptive.SimpleBinaryEncoding.ir.Encoding"/> easier to create.
+            </summary>
+        </member>
+        <member name="T:Adaptive.SimpleBinaryEncoding.ir.HeaderStructure">
+            <summary>
+            Metadata description for a message headerStructure
+            </summary>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.HeaderStructure.Tokens">
+            <summary>
+            List of <see cref="T:Adaptive.SimpleBinaryEncoding.ir.Token"/> associated with this <see cref="T:Adaptive.SimpleBinaryEncoding.ir.HeaderStructure"/>
+            </summary>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.HeaderStructure.BlockLengthType">
+            <summary>
+            Underyling type used to store block length information
+            </summary>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.HeaderStructure.TemplateIdType">
+            <summary>
+            Underyling type used to store template id infomation
+            </summary>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.HeaderStructure.SchemaIdType">
+            <summary>
+            Underyling type used to store schema id information
+            </summary>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.HeaderStructure.SchemaVersionType">
+            <summary>
+            Underyling type used to store schema version information
+            </summary>
+        </member>
+        <member name="T:Adaptive.SimpleBinaryEncoding.ir.IntermediateRepresentation">
+            <summary>
+            Intermediate representation of SBE messages to be used for the generation of encoders and decoders
+            as stubs in various languages.
+            </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.ir.IntermediateRepresentation.#ctor(System.String,System.String,System.Int32,System.Int32,System.String,System.Collections.Generic.IList{Adaptive.SimpleBinaryEncoding.ir.Token})">
+            <summary>
+            Create a new IR container taking a defensive copy of the headerStructure <seealso cref="T:Adaptive.SimpleBinaryEncoding.ir.Token"/>s passed.
+            </summary>
+            <param name="packageName"> that should be applied to generated code. </param>
+            <param name="namespaceName"> that should be applied to generated code.</param>
+            <param name="semanticVersion">semantic version for mapping to the application domain.</param>
+            <param name="headerTokens"> representing the message headerStructure. </param>
+            <param name="id"></param>
+            <param name="version"></param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.ir.IntermediateRepresentation.AddMessage(System.Int64,System.Collections.Generic.IList{Adaptive.SimpleBinaryEncoding.ir.Token})">
+            <summary>
+            Add a List of <seealso cref="T:Adaptive.SimpleBinaryEncoding.ir.Token"/>s for a given message id.
+            </summary>
+            <param name="messageId"> to identify the list of tokens for the message. </param>
+            <param name="messageTokens"> the List of <seealso cref="T:Adaptive.SimpleBinaryEncoding.ir.Token"/>s representing the message. </param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.ir.IntermediateRepresentation.GetMessage(System.Int64)">
+            <summary>
+            Get the getMessage for a given identifier.
+            </summary>
+            <param name="messageId"> to get. </param>
+            <returns> the List of <seealso cref="T:Adaptive.SimpleBinaryEncoding.ir.Token"/>s representing the message or null if the id is not found. </returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.ir.IntermediateRepresentation.GetType(System.String)">
+            <summary>
+            Get the type representation for a given type name.
+            </summary>
+            <param name="name"> of type to get. </param>
+            <returns> the List of <seealso cref="T:Adaptive.SimpleBinaryEncoding.ir.Token"/>s representing the type or null if the name is not found. </returns>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.IntermediateRepresentation.HeaderStructure">
+            <summary>
+            Return the <seealso cref="P:Adaptive.SimpleBinaryEncoding.ir.IntermediateRepresentation.HeaderStructure"/> description for all messages.
+            </summary>
+            <value>the &lt;seealso cref="HeaderStructure"/&gt; description for all messages.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.IntermediateRepresentation.Types">
+            <summary>
+            Get the <seealso cref="T:System.Collections.ObjectModel.Collection`1"/> of types in for this schema.
+            </summary>
+            <value>the collection of types in for this schema.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.IntermediateRepresentation.Messages">
+            <summary>
+            The collection of messages in this schema.
+            </summary>
+            <value>the collection of messages in this schema.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.IntermediateRepresentation.PackageName">
+            <summary>
+            Get the package name to be used for generated code.
+            </summary>
+            <value>the package name to be used for generated code.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.IntermediateRepresentation.NamespaceName">
+            <summary>
+            Get the namespace name to be used for generated code.
+            </summary>
+            <value>the namespace name to be used for generated code.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.IntermediateRepresentation.Id">
+            <summary>
+            Get the id number of the schema.
+            </summary>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.IntermediateRepresentation.ApplicableNamespace">
+             <summary>
+             Get the namespaceName to be used for generated code.
+            
+             If <seealso cref="P:Adaptive.SimpleBinaryEncoding.ir.IntermediateRepresentation.NamespaceName"/> is null then <seealso cref="P:Adaptive.SimpleBinaryEncoding.ir.IntermediateRepresentation.PackageName"/> is used.
+             </summary>
+             <returns> the namespaceName to be used for generated code. </returns>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.IntermediateRepresentation.Version">
+            <summary>
+            Get the version of the schema.
+            </summary>
+            <value>version number.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.IntermediateRepresentation.SemanticVersion">
+            <summary>
+            Get the semantic version of the schema.
+            </summary>
+        </member>
+        <member name="T:Adaptive.SimpleBinaryEncoding.ir.IrDecoder">
+            <summary>
+            <see cref="T:Adaptive.SimpleBinaryEncoding.ir.IrDecoder"/> can be used to read a SBE encoded intermediate representation generated with SBE Tool
+            </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.ir.IrDecoder.#ctor(System.String)">
+            <summary>
+            Initialize a new instance of <see cref="T:Adaptive.SimpleBinaryEncoding.ir.IrDecoder"/> from a file.
+            </summary>
+            <param name="fileName">path to the file containing the SBE encoded IR.</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.ir.IrDecoder.#ctor(System.Byte[])">
+            <summary>
+            Initialize a new instance of <see cref="T:Adaptive.SimpleBinaryEncoding.ir.IrDecoder"/> from a byte array
+            </summary>
+            <param name="buffer">the byte array containg the SBE encoded IR.</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.ir.IrDecoder.Decode">
+            <summary>
+            Decodes the input to <see cref="T:Adaptive.SimpleBinaryEncoding.ir.IntermediateRepresentation"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Adaptive.SimpleBinaryEncoding.ir.Presence">
+            <summary>
+            Indicates the presence status of a primitive encoded field in a message.
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Presence.Required">
+            <summary>
+            The field presence is required. 
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Presence.Optional">
+            <summary>
+            The field presence is optional. 
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Presence.Constant">
+            <summary>
+            The field presence is a constant. 
+            </summary>
+        </member>
+        <member name="T:Adaptive.SimpleBinaryEncoding.ir.Signal">
+            <summary>
+            Signal the <seealso cref="T:Adaptive.SimpleBinaryEncoding.ir.Token"/> role within a stream of tokens. These signals begin/end various entities
+            such as fields, composites, messages, repeating groups, enumerations, bitsets, etc.
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Signal.BeginMessage">
+            <summary>
+            Denotes the beginning of a message 
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Signal.EndMessage">
+            <summary>
+            Denotes the end of a message 
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Signal.BeginComposite">
+            <summary>
+            Denotes the beginning of a composite
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Signal.EndComposite">
+            <summary>
+            Denotes the end of a composite 
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Signal.BeginField">
+            <summary>
+            Denotes the beginning of a field 
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Signal.EndField">
+            <summary>
+            Denotes the end of a field 
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Signal.BeginGroup">
+            <summary>
+            Denotes the beginning of a repeating group 
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Signal.EndGroup">
+            <summary>
+            Denotes the end of a repeating group 
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Signal.BeginEnum">
+            <summary>
+            Denotes the beginning of an enumeration 
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Signal.ValidValue">
+            <summary>
+            Denotes a value of an enumeration 
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Signal.EndEnum">
+            <summary>
+            Denotes the end of an enumeration 
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Signal.BeginSet">
+            <summary>
+            Denotes the beginning of a bitset 
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Signal.Choice">
+            <summary>
+            Denotes a bit value (choice) of a bitset 
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Signal.EndSet">
+            <summary>
+            Denotes the end of a bitset 
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Signal.BeginVarData">
+            <summary>
+            Denotes the beginning of a variable data block 
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Signal.EndVarData">
+            <summary>
+            Denotes the end of a variable data block 
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Signal.Encoding">
+            <summary>
+            Denotes the <seealso cref="T:Adaptive.SimpleBinaryEncoding.ir.Token"/> is an encoding 
+            </summary>
+        </member>
+        <member name="T:Adaptive.SimpleBinaryEncoding.ir.Token">
+             <summary>
+             Class to encapsulate a token of information for the message schema stream. This Intermediate Representation (IR)
+             is intended to be language, schema, platform independent.
+            
+             Processing and optimization could be run over a list of Tokens to perform various functions
+             <ul>
+             <li>re-ordering of fields based on size</li>
+             <li>padding of fields in order to provide expansion room</li>
+             <li>computing offsets of individual fields</li>
+             <li>etc.</li>
+             </ul>
+            
+             IR could be used to generate code or other specifications. It should be possible to do the
+             following:
+             <ul>
+             <li>generate a FIX/SBE schema from IR</li>
+             <li>generate an ASN.1 spec from IR</li>
+             <li>generate a GPB spec from IR</li>
+             <li>etc.</li>
+             </ul>
+            
+             IR could be serialized to storage or network via code generated by SBE. Then read back in to
+             a List of <seealso cref="T:Adaptive.SimpleBinaryEncoding.ir.Token"/>s.
+            
+             The entire IR of an entity is a <see cref="T:System.Collections.Generic.List`1"/>. The order of this list is
+             very important. Encoding of fields is done by nodes pointing to specific encoding <seealso cref="T:Adaptive.SimpleBinaryEncoding.PrimitiveType"/>
+             objects. Each encoding node contains size, offset, byte order, and <seealso cref="P:Adaptive.SimpleBinaryEncoding.ir.Token.Encoding"/>. Entities relevant
+             to the encoding such as fields, messages, repeating groups, etc. are encapsulated in the list as nodes
+             themselves. Although, they will in most cases never be serialized. The boundaries of these entities
+             are delimited by BEGIN and END <seealso cref="T:Adaptive.SimpleBinaryEncoding.ir.Signal"/> values in the node <seealso cref="P:Adaptive.SimpleBinaryEncoding.ir.Token.Encoding"/>.
+             A list structure like this allows for each concatenation of encodings as well as easy traversal.
+            
+             An example encoding of a message headerStructure might be like this.
+             <ul>
+             <li>Token 0 - Signal = BEGIN_MESSAGE, schemaId = 100</li>
+             <li>Token 1 - Signal = BEGIN_FIELD, schemaId = 25</li>
+             <li>Token 2 - Signal = ENCODING, PrimitiveType = uint32, size = 4, offset = 0</li>
+             <li>Token 3 - Signal = END_FIELD</li>
+             <li>Token 4 - Signal = END_MESSAGE</li>
+             </ul>
+            
+             </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Token.InvalidId">
+            <summary>
+            Invalid ID value. </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Token.VariableSize">
+            <summary>
+            Size not determined </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.Token.UnknownOffset">
+            <summary>
+            Offset not computed or set </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.ir.Token.#ctor(Adaptive.SimpleBinaryEncoding.ir.Signal,System.String,System.Int32,System.Int32,System.Int32,System.Int32,Adaptive.SimpleBinaryEncoding.ir.Encoding)">
+            <summary>
+            Construct an <seealso cref="T:Adaptive.SimpleBinaryEncoding.ir.Token"/> by providing values for all fields.
+            </summary>
+            <param name="signal"> for the token role </param>
+            <param name="name"> of the token in the message </param>
+            <param name="id"> as the identifier in the message declaration </param>
+            <param name="version"> application within the template </param>
+            <param name="size"> of the component part </param>
+            <param name="offset"> in the underlying message as octets </param>
+            <param name="encoding"> of the primitive field </param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.ir.Token.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>
+            A string that represents the current object.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Token.Signal">
+            <summary>
+            Signal the role of this token.
+            </summary>
+            <value>the &lt;seealso cref=&quot;Signal&quot;/&gt; for the token.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Token.Name">
+            <summary>
+            Return the name of the token
+            </summary>
+            <value>name of the token</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Token.Id">
+            <summary>
+            Return the ID of the token assigned by the specification
+            </summary>
+            <value>ID of the token assigned by the specification</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Token.Version">
+            <summary>
+            The version context for this token.
+            </summary>
+            <value>version context for this token.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Token.VersionContext">
+            <summary>
+            The context in which the version field should be interpreted.
+            </summary>
+            <value>context in which the version field should be interpreted.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Token.Size">
+            <summary>
+            The size of this token in bytes.
+            </summary>
+            <value>
+              the size of this node. A value of 0 means the node has no size when encoded. A value of &lt;seealso cref=&quot;
+              Token#VARIABLE_SIZE&quot;/&gt; means this node represents a variable length field.
+            </value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Token.ArrayLength">
+            <summary>
+            The number of encoded primitives in this type.
+            </summary>
+            <value>number of encoded primitives in this type.</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Token.Offset">
+            <summary>
+            The offset for this token in the message.
+            </summary>
+            <value>
+              the offset of this Token. A value of 0 means the node has no relevant offset. A value of &lt;seealso cref=&quot;
+              Token#UNKNOWN_OFFSET&quot;/&gt; means this nodes true offset is dependent on variable length fields ahead of it in
+              the encoding.
+            </value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.ir.Token.Encoding">
+            <summary>
+            Return the <seealso cref="P:Adaptive.SimpleBinaryEncoding.ir.Token.Encoding"/> of the <seealso cref="T:Adaptive.SimpleBinaryEncoding.ir.Token"/>.
+            </summary>
+            <value>encoding of the &lt;seealso cref="Token"/&gt;</value>
+        </member>
+        <member name="T:Adaptive.SimpleBinaryEncoding.ir.VersionContext">
+            <summary>
+            Indicates how the version field should be interpreted. 
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.VersionContext.TemplateVersion">
+            <summary>
+            Indicates the version is for the template itself. 
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.ir.VersionContext.SinceTemplateVersion">
+            <summary>
+            Indicates the field was introduced since this template version. 
+            </summary>
+        </member>
+        <member name="T:Adaptive.SimpleBinaryEncoding.Otf.AbstractTokenListener">
+            <summary>
+                Abstract <seealso cref="T:Adaptive.SimpleBinaryEncoding.Otf.ITokenListener"/> that can be extended when not all callback methods are required.
+                <p/>
+                By extending this class their is a possibility for the optimizer to elide unused methods otherwise requiring polymorphic dispatch.
+            For usage see: https://github.com/real-logic/simple-binary-encoding/blob/master/examples/csharp/Otf/ExampleTokenListener.cs
+            </summary>
+        </member>
+        <member name="T:Adaptive.SimpleBinaryEncoding.Otf.ITokenListener">
+            <summary>
+                Callback interface to be implemented by code wanting to decode messages on-the-fly.
+                <p/>
+                If all methods are not required then consider extending <seealso cref="T:Adaptive.SimpleBinaryEncoding.Otf.AbstractTokenListener"/> for potential
+                performance benefits and simpler code.
+            </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.ITokenListener.OnBeginMessage(Adaptive.SimpleBinaryEncoding.ir.Token)">
+            <summary>
+                Called on beginning the decoding of a message.
+            </summary>
+            <param name="token"> representing the IR for message including meta data. </param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.ITokenListener.OnEndMessage(Adaptive.SimpleBinaryEncoding.ir.Token)">
+            <summary>
+                Called on end of decoding of a message.
+            </summary>
+            <param name="token"> representing the IR for message including meta data. </param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.ITokenListener.OnEncoding(Adaptive.SimpleBinaryEncoding.ir.Token,Adaptive.SimpleBinaryEncoding.DirectBuffer,System.Int32,Adaptive.SimpleBinaryEncoding.ir.Token,System.Int32)">
+            <summary>
+                Primitive encoded type encountered. This can be a root block field or field within a composite or group.
+                <p />
+                Within a composite the typeToken and fieldToken are the same.
+            </summary>
+            <param name="fieldToken"> in the IR representing the field of the message root or group. </param>
+            <param name="buffer"> containing the encoded message. </param>
+            <param name="bufferIndex"> at which the encoded field begins. </param>
+            <param name="typeToken"> of the encoded primitive value. </param>
+            <param name="actingVersion"> of the encoded message for determining validity of extension fields. </param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.ITokenListener.OnEnum(Adaptive.SimpleBinaryEncoding.ir.Token,Adaptive.SimpleBinaryEncoding.DirectBuffer,System.Int32,System.Collections.Generic.IList{Adaptive.SimpleBinaryEncoding.ir.Token},System.Int32,System.Int32,System.Int32)">
+            <summary>
+                Enum encoded type encountered.
+            </summary>
+            <param name="fieldToken"> in the IR representing the field of the message root or group. </param>
+            <param name="buffer"> containing the encoded message. </param>
+            <param name="bufferIndex"> at which the encoded field begins. </param>
+            <param name="tokens"> describing the message. </param>
+            <param name="fromIndex"> at which the enum metadata begins. </param>
+            <param name="toIndex"> at which the enum metadata ends. </param>
+            <param name="actingVersion"> of the encoded message for determining validity of extension fields. </param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.ITokenListener.OnBitSet(Adaptive.SimpleBinaryEncoding.ir.Token,Adaptive.SimpleBinaryEncoding.DirectBuffer,System.Int32,System.Collections.Generic.IList{Adaptive.SimpleBinaryEncoding.ir.Token},System.Int32,System.Int32,System.Int32)">
+            <summary>
+                BitSet encoded type encountered.
+            </summary>
+            <param name="fieldToken"> in the IR representing the field of the message root or group. </param>
+            <param name="buffer"> containing the encoded message. </param>
+            <param name="bufferIndex"> at which the encoded field begins. </param>
+            <param name="tokens"> describing the message. </param>
+            <param name="fromIndex"> at which the bit set metadata begins. </param>
+            <param name="toIndex"> at which the bit set metadata ends. </param>
+            <param name="actingVersion"> of the encoded message for determining validity of extension fields. </param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.ITokenListener.OnBeginComposite(Adaptive.SimpleBinaryEncoding.ir.Token,System.Collections.Generic.IList{Adaptive.SimpleBinaryEncoding.ir.Token},System.Int32,System.Int32)">
+            <summary>
+                Beginning of Composite encoded type encountered.
+            </summary>
+            <param name="fieldToken"> in the IR representing the field of the message root or group. </param>
+            <param name="tokens"> describing the message. </param>
+            <param name="fromIndex"> at which the composite metadata begins. </param>
+            <param name="toIndex"> at which the composite metadata ends. </param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.ITokenListener.OnEndComposite(Adaptive.SimpleBinaryEncoding.ir.Token,System.Collections.Generic.IList{Adaptive.SimpleBinaryEncoding.ir.Token},System.Int32,System.Int32)">
+            <summary>
+                End of Composite encoded type encountered.
+            </summary>
+            <param name="fieldToken"> in the IR representing the field of the message root or group. </param>
+            <param name="tokens"> describing the message. </param>
+            <param name="fromIndex"> at which the composite metadata begins. </param>
+            <param name="toIndex"> at which the composite metadata ends. </param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.ITokenListener.OnBeginGroup(Adaptive.SimpleBinaryEncoding.ir.Token,System.Int32,System.Int32)">
+            <summary>
+                Beginning of group encoded type encountered.
+            </summary>
+            <param name="token"> describing the group. </param>
+            <param name="groupIndex"> index for the repeat count of the group. </param>
+            <param name="numInGroup"> number of times the group will be repeated. </param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.ITokenListener.OnEndGroup(Adaptive.SimpleBinaryEncoding.ir.Token,System.Int32,System.Int32)">
+            <summary>
+                End of group encoded type encountered.
+            </summary>
+            <param name="token"> describing the group. </param>
+            <param name="groupIndex"> index for the repeat count of the group. </param>
+            <param name="numInGroup"> number of times the group will be repeated. </param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.ITokenListener.OnVarData(Adaptive.SimpleBinaryEncoding.ir.Token,Adaptive.SimpleBinaryEncoding.DirectBuffer,System.Int32,System.Int32,Adaptive.SimpleBinaryEncoding.ir.Token)">
+            <summary>
+                Var data field encountered.
+            </summary>
+            <param name="fieldToken"> in the IR representing the var data field. </param>
+            <param name="buffer"> containing the encoded message. </param>
+            <param name="bufferIndex"> at which the variable data begins. </param>
+            <param name="length"> of the variable data in bytes. </param>
+            <param name="typeToken">
+                of the variable data. Specifically needed to determine character encoding of the variable
+                data.
+            </param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.AbstractTokenListener.OnBeginMessage(Adaptive.SimpleBinaryEncoding.ir.Token)">
+            <summary>
+            Callback raised when the OTF decoder encounters the begining of a message
+            </summary>
+            <param name="token">the corresponding token</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.AbstractTokenListener.OnEndMessage(Adaptive.SimpleBinaryEncoding.ir.Token)">
+            <summary>
+            Callback raised when the OTF decoder encounters the end of a message
+            </summary>
+            <param name="token">the corresponding token</param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.AbstractTokenListener.OnEncoding(Adaptive.SimpleBinaryEncoding.ir.Token,Adaptive.SimpleBinaryEncoding.DirectBuffer,System.Int32,Adaptive.SimpleBinaryEncoding.ir.Token,System.Int32)">
+            <summary>
+            Callback raised when the OTF decoder encounters an encoding
+            </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.AbstractTokenListener.OnEnum(Adaptive.SimpleBinaryEncoding.ir.Token,Adaptive.SimpleBinaryEncoding.DirectBuffer,System.Int32,System.Collections.Generic.IList{Adaptive.SimpleBinaryEncoding.ir.Token},System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Callback raised when the OTF decoder encounters an enum
+            </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.AbstractTokenListener.OnBitSet(Adaptive.SimpleBinaryEncoding.ir.Token,Adaptive.SimpleBinaryEncoding.DirectBuffer,System.Int32,System.Collections.Generic.IList{Adaptive.SimpleBinaryEncoding.ir.Token},System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Callback raised when the OTF decoder encounters a bit set
+            </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.AbstractTokenListener.OnBeginComposite(Adaptive.SimpleBinaryEncoding.ir.Token,System.Collections.Generic.IList{Adaptive.SimpleBinaryEncoding.ir.Token},System.Int32,System.Int32)">
+            <summary>
+            Callback raised when the OTF decoder encounters the beginning of a composite
+            </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.AbstractTokenListener.OnEndComposite(Adaptive.SimpleBinaryEncoding.ir.Token,System.Collections.Generic.IList{Adaptive.SimpleBinaryEncoding.ir.Token},System.Int32,System.Int32)">
+            <summary>
+            Callback raised when the OTF decoder encounters the end of a composite
+            </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.AbstractTokenListener.OnBeginGroup(Adaptive.SimpleBinaryEncoding.ir.Token,System.Int32,System.Int32)">
+            <summary>
+            Callback raised when the OTF decoder encounters the beginning of a group
+            </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.AbstractTokenListener.OnEndGroup(Adaptive.SimpleBinaryEncoding.ir.Token,System.Int32,System.Int32)">
+            <summary>
+            Callback raised when the OTF decoder encounters the end of a group
+            </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.AbstractTokenListener.OnVarData(Adaptive.SimpleBinaryEncoding.ir.Token,Adaptive.SimpleBinaryEncoding.DirectBuffer,System.Int32,System.Int32,Adaptive.SimpleBinaryEncoding.ir.Token)">
+            <summary>
+            Callback raised when the OTF decoder encounters a variable length data
+            </summary>
+        </member>
+        <member name="T:Adaptive.SimpleBinaryEncoding.Otf.OtfHeaderDecoder">
+             <summary>
+             Used to decode a message header while doing on-the-fly decoding of a message stream.
+            
+             Meta data is cached to improve the performance of decoding headers.
+            
+             This class is thread safe.
+             </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.OtfHeaderDecoder.#ctor(Adaptive.SimpleBinaryEncoding.ir.HeaderStructure)">
+            <summary>
+            Read the message header structure and cache the meta data for finding the key fields for decoding messages.
+            </summary>
+            <param name="headerStructure"> for the meta data describing the message header. </param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.OtfHeaderDecoder.GetTemplateId(Adaptive.SimpleBinaryEncoding.DirectBuffer,System.Int32)">
+            <summary>
+            Get the template id from the message header.
+            </summary>
+            <param name="buffer"> from which to read the value. </param>
+            <param name="bufferOffset"> in the buffer at which the message header begins. </param>
+            <returns> the value of the template id. </returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.OtfHeaderDecoder.GetSchemaId(Adaptive.SimpleBinaryEncoding.DirectBuffer,System.Int32)">
+            <summary>
+            Get the schema id number from the message header.
+            </summary>
+            <param name="buffer">buffer from which to read the value.</param>
+            <param name="bufferOffset">bufferOffset in the buffer at which the message header begins.</param>
+            <returns>the value of the schema id number.</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.OtfHeaderDecoder.GetSchemaVersion(Adaptive.SimpleBinaryEncoding.DirectBuffer,System.Int32)">
+            <summary>
+            Get the schema version number from the message header.
+            </summary>
+            <param name="buffer"> from which to read the value. </param>
+            <param name="bufferOffset"> in the buffer at which the message header begins. </param>
+            <returns> the value of the schema version number. </returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.OtfHeaderDecoder.GetBlockLength(Adaptive.SimpleBinaryEncoding.DirectBuffer,System.Int32)">
+            <summary>
+            Get the block length of the root block in the message.
+            </summary>
+            <param name="buffer"> from which to read the value. </param>
+            <param name="bufferOffset"> in the buffer at which the message header begins. </param>
+            <returns> the length of the root block in the coming message. </returns>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.Otf.OtfHeaderDecoder.Size">
+            <summary>
+            The size of the message header in bytes.
+            </summary>
+            <value>the size of the message header in bytes.</value>
+        </member>
+        <member name="T:Adaptive.SimpleBinaryEncoding.Otf.OtfMessageDecoder">
+            <summary>
+                On-the-fly decoder that dynamically decodes messages based on the IR for a schema.
+                <p/>
+                The contents of the messages are structurally decomposed and passed to a <seealso cref="T:Adaptive.SimpleBinaryEncoding.Otf.ITokenListener"/> for
+                decoding the primitive values.
+                <p/>
+                The design keeps all state on the stack to maximise performance and avoid object allocation. The message decoder
+                can be used reused by
+                repeatably calling
+                <seealso cref="M:Adaptive.SimpleBinaryEncoding.Otf.OtfMessageDecoder.Decode(Adaptive.SimpleBinaryEncoding.DirectBuffer,System.Int32,System.Int32,System.Int32,System.Collections.Generic.IList{Adaptive.SimpleBinaryEncoding.ir.Token},Adaptive.SimpleBinaryEncoding.Otf.ITokenListener)"/>
+                and is thread safe to be used across multiple threads.
+            </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.OtfMessageDecoder.Decode(Adaptive.SimpleBinaryEncoding.DirectBuffer,System.Int32,System.Int32,System.Int32,System.Collections.Generic.IList{Adaptive.SimpleBinaryEncoding.ir.Token},Adaptive.SimpleBinaryEncoding.Otf.ITokenListener)">
+            <summary>
+                Decode a message from the provided buffer based on the message schema described with IR
+                <seealso cref="T:Adaptive.SimpleBinaryEncoding.ir.Token"/>s.
+            </summary>
+            <param name="buffer">        containing the encoded message. </param>
+            <param name="bufferIndex">   at which the message encoding starts in the buffer. </param>
+            <param name="actingVersion"> of the encoded message for dealing with extension fields. </param>
+            <param name="blockLength">   of the root message fields. </param>
+            <param name="msgTokens">     in IR format describing the message structure. </param>
+            <param name="listener">      to callback for decoding the primitive values as discovered in the structure. </param>
+            <returns> the index in the underlying buffer after decoding. </returns>
+        </member>
+        <member name="T:Adaptive.SimpleBinaryEncoding.Otf.Util">
+            <summary>
+            Utility functions to help with on-the-fly decoding.
+            </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Otf.Util.GetInt(Adaptive.SimpleBinaryEncoding.DirectBuffer,System.Int32,Adaptive.SimpleBinaryEncoding.PrimitiveType,Adaptive.SimpleBinaryEncoding.ByteOrder)">
+            <summary>
+            Get an integer value from a buffer at a given index.
+            </summary>
+            <param name="buffer"> from which to read. </param>
+            <param name="bufferIndex"> at which he integer should be read. </param>
+            <param name="type"> of the integer encoded in the buffer. </param>
+            <param name="byteOrder"> of the integer in the buffer. </param>
+            <returns> the value of the encoded integer. </returns>
+        </member>
+        <member name="T:Adaptive.SimpleBinaryEncoding.PrimitiveType">
+             <summary>
+             Primitive types from which all other types are composed.
+             
+            
+             <table>
+                 <thead>
+                     <tr>
+                         <th>PrimitiveType Type</th>
+                         <th>Description</th>
+                         <th>Length (octets)</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     <tr>
+                         <td>char</td>
+                         <td>Character</td>
+                         <td>1</td>
+                     </tr>
+                     <tr>
+                         <td>int8</td>
+                         <td>Signed byte</td>
+                         <td>1</td>
+                     </tr>
+                     <tr>
+                         <td>uint8</td>
+                         <td>Unsigned Byte / single byte character</td>
+                         <td>1</td>
+                     </tr>
+                     <tr>
+                         <td>int16</td>
+                         <td>Signed integer</td>
+                         <td>2</td>
+                     </tr>
+                     <tr>
+                         <td>uint16</td>
+                         <td>Unsigned integer</td>
+                         <td>2</td>
+                     </tr>
+                     <tr>
+                         <td>int32</td>
+                         <td>Signed integer</td>
+                         <td>4</td>
+                     </tr>
+                     <tr>
+                         <td>uint32</td>
+                         <td>Unsigned integer</td>
+                         <td>4</td>
+                     </tr>
+                     <tr>
+                         <td>int64</td>
+                         <td>Signed integer</td>
+                         <td>8</td>
+                     </tr>
+                     <tr>
+                         <td>uint64</td>
+                         <td>Unsigned integer</td>
+                         <td>8</td>
+                     </tr>
+                     <tr>
+                         <td>float</td>
+                         <td>Single precision floating point</td>
+                         <td>4</td>
+                     </tr>
+                     <tr>
+                         <td>double</td>
+                         <td>Double precision floating point</td>
+                         <td>8</td>
+                     </tr>
+                 </tbody>
+             </table>
+             </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveType.SbeChar">
+            <summary>
+            Primitive type representation for SBE type CHAR
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveType.SbeInt8">
+            <summary>
+            Primitive type representation for SBE type INT8
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveType.SbeInt16">
+            <summary>
+            Primitive type representation for SBE type INT16
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveType.SbeInt32">
+            <summary>
+            Primitive type representation for SBE type INT32
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveType.SbeInt64">
+            <summary>
+            Primitive type representation for SBE type INT64
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveType.SbeUInt8">
+            <summary>
+            Primitive type representation for SBE type UINT8
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveType.SbeUInt16">
+            <summary>
+            Primitive type representation for SBE type UINT16
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveType.SbeUInt32">
+            <summary>
+            Primitive type representation for SBE type UINT32
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveType.SbeUInt64">
+            <summary>
+            Primitive type representation for SBE type UINT64
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveType.SbeFloat">
+            <summary>
+            Primitive type representation for SBE type FLOAT
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveType.SbeDouble">
+            <summary>
+            Primitive type representation for SBE type DOUBLE
+            </summary>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.PrimitiveType.PrimitiveName">
+            <summary>
+                The name of the primitive type as a String.
+            </summary>
+            <value>the name as a String</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.PrimitiveType.Size">
+            <summary>
+                The size of the primitive type in octets.
+            </summary>
+            <value>size (in octets) of the primitive type</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.PrimitiveType.MinValue">
+            <summary>
+                The minValue of the primitive type.
+            </summary>
+            <value>default minValue of the primitive type</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.PrimitiveType.MaxValue">
+            <summary>
+                The maxValue of the primitive type.
+            </summary>
+            <value>default maxValue of the primitive type</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.PrimitiveType.NullValue">
+            <summary>
+                The nullValue of the primitive type.
+            </summary>
+            <value>default nullValue of the primitive type</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.PrimitiveType.Type">
+            <summary>
+            The SBE Type of the primitive type.
+            </summary>
+        </member>
+        <member name="T:Adaptive.SimpleBinaryEncoding.PrimitiveValue">
+            <summary>
+                Class used to encapsulate values for primitives. Used for nullValue, minValue, maxValue, and constants
+                <p />
+                <table>
+                    <thead>
+                        <tr>
+                            <th>PrimitiveType</th>
+                            <th>Null</th>
+                            <th>Min</th>
+                            <th>Max</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>char</td>
+                            <td>0</td>
+                            <td>0x20</td>
+                            <td>0x7E</td>
+                        </tr>
+                        <tr>
+                            <td>int8</td>
+                            <td>-128</td>
+                            <td>-127</td>
+                            <td>127</td>
+                        </tr>
+                        <tr>
+                            <td>uint8</td>
+                            <td>255</td>
+                            <td>0</td>
+                            <td>254</td>
+                        </tr>
+                        <tr>
+                            <td>int16</td>
+                            <td>-32768</td>
+                            <td>-32767</td>
+                            <td>32767</td>
+                        </tr>
+                        <tr>
+                            <td>uint16</td>
+                            <td>65535</td>
+                            <td>0</td>
+                            <td>65534</td>
+                        </tr>
+                        <tr>
+                            <td>int32</td>
+                            <td>2^31</td>
+                            <td>-2^31 + 1</td>
+                            <td>2^31 - 1</td>
+                        </tr>
+                        <tr>
+                            <td>uint32</td>
+                            <td>2^32 - 1</td>
+                            <td>0</td>
+                            <td>2^32 - 2</td>
+                        </tr>
+                        <tr>
+                            <td>int64</td>
+                            <td>2^63</td>
+                            <td>-2^63 + 1</td>
+                            <td>2^63 - 1</td>
+                        </tr>
+                        <tr>
+                            <td>uint64</td>
+                            <td>2^64 - 1</td>
+                            <td>0</td>
+                            <td>2^64 - 2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.MinValueChar">
+            <summary>
+            Minimum value for CHAR SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.MaxValueChar">
+            <summary>
+            Maximum value for CHAR SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.NullValueChar">
+            <summary>
+            Null value for CHAR SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.MinValueInt8">
+            <summary>
+            Minimum value for INT8 SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.MaxValueInt8">
+            <summary>
+            Maximum value for CHAR SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.NullValueInt8">
+            <summary>
+            Null value for CHAR SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.MinValueUint8">
+            <summary>
+            Minimum value for UINT8 SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.MaxValueUint8">
+            <summary>
+            Maximum value for UINT8 SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.NullValueUint8">
+            <summary>
+            Null value for UINT8 SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.MinValueInt16">
+            <summary>
+            Minimum value for INT16 SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.MaxValueInt16">
+            <summary>
+            Maximum value for INT16 SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.NullValueInt16">
+            <summary>
+            Null value for INT16 SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.MinValueUint16">
+            <summary>
+            Minimum value for UINT16 SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.MaxValueUint16">
+            <summary>
+            Maximum value for UINT16 SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.NullValueUint16">
+            <summary>
+            Null value for UINT16 SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.MinValueInt32">
+            <summary>
+            Minimum value for INT32 SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.MaxValueInt32">
+            <summary>
+            Maximum value for INT32 SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.NullValueInt32">
+            <summary>
+            Null value for INT32 SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.MinValueUint32">
+            <summary>
+            Minimum value for UINT32 SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.MaxValueUint32">
+            <summary>
+            Maximum value for UINT32 SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.NullValueUint32">
+            <summary>
+            Null value for UINT32 SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.MinValueInt64">
+            <summary>
+            Minimum value for INT64 SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.MaxValueInt64">
+            <summary>
+            Maximum value for INT64 SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.NullValueInt64">
+            <summary>
+            Null value for INT64 SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.MinValueUint64">
+            <summary>
+            Minimum value for UINT64 SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.MaxValueUint64">
+            <summary>
+            Maximum value for UINT64 SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.NullValueUint64">
+            <summary>
+            Null value for UINT64 SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.MinValueFloat">
+            <summary>
+            Minimum value for FLOAT SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.MaxValueFloat">
+            <summary>
+            Maximum value for FLOAT SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.NullValueFloat">
+            <summary>
+            Null value for FLOAT SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.MinValueDouble">
+            <summary>
+            Minimum value for DOUBLE SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.MaxValueDouble">
+            <summary>
+            Maximum value for DOUBLE SBE type
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.PrimitiveValue.NullValueDouble">
+            <summary>
+            Null value for DOUBLE SBE type
+            </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.PrimitiveValue.#ctor(System.Int64,System.Int32)">
+            <summary>
+                Construct and fill in value as a long.
+            </summary>
+            <param name="value"> in long format </param>
+            <param name="size"></param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.PrimitiveValue.#ctor(System.Double,System.Int32)">
+            <summary>
+                Construct and fill in value as a double.
+            </summary>
+            <param name="value"> in double format </param>
+            <param name="size"></param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.PrimitiveValue.#ctor(System.UInt64,System.Int32)">
+            <summary>
+                Construct and fill in value as a double.
+            </summary>
+            <param name="value"> in double format </param>
+            <param name="size"></param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.PrimitiveValue.#ctor(System.Byte[],System.String,System.Int32)">
+            <summary>
+                Construct and fill in value as a byte array.
+            </summary>
+            <param name="value"> as a byte array </param>
+            <param name="characterEncoding"></param>
+            <param name="size"></param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.PrimitiveValue.Parse(System.String,Adaptive.SimpleBinaryEncoding.PrimitiveType)">
+            <summary>
+                Parse constant value string and set representation based on type
+            </summary>
+            <param name="value">     expressed as a String </param>
+            <param name="primitiveType"> that this is supposed to be </param>
+            <returns> a new <seealso cref="T:Adaptive.SimpleBinaryEncoding.PrimitiveValue"/> for the value. </returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.PrimitiveValue.LongValue">
+            <summary>
+                Return long value for this PrimitiveValue
+            </summary>
+            <returns>value expressed as a long</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.PrimitiveValue.ULongValue">
+            <summary>
+                Return unsigned long value for this PrimitiveValue
+            </summary>
+            <returns>value expressed as a ulong</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.PrimitiveValue.DoubleValue">
+            <summary>
+                Return double value for this PrimitiveValue.
+            </summary>
+            <returns>value expressed as a double</returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.PrimitiveValue.ByteArrayValue">
+            <summary>
+                Return byte array value for this PrimitiveValue.
+            </summary>
+            <returns> value expressed as a byte array </returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.PrimitiveValue.ByteArrayValue(Adaptive.SimpleBinaryEncoding.SbePrimitiveType)">
+            <summary>
+                Return byte array value for this PrimitiveValue given a particular type
+            </summary>
+            <param name="type"> of this value </param>
+            <returns> value expressed as a byte array </returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.PrimitiveValue.ToString">
+            <summary>
+                Return String representation of this object
+            </summary>
+            <returns> String representing object value </returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.PrimitiveValue.Equals(System.Object)">
+            <summary>
+                Determine if two values are equivalent.
+            </summary>
+            <param name="value"> to compare this value with </param>
+            <returns> equivalence of values </returns>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.PrimitiveValue.GetHashCode">
+            <summary>
+                Return hashCode for value. This is the underlying representations hashCode for the value
+            </summary>
+            <returns> int value of the hashCode </returns>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.PrimitiveValue.Size">
+            <summary>
+                Return size for this PrimitiveValue for serialization purposes.
+            </summary>
+            <value>size for serialization</value>
+        </member>
+        <member name="P:Adaptive.SimpleBinaryEncoding.PrimitiveValue.CharacterEncoding">
+            <summary>
+                The character encoding of the byte array representation.
+            </summary>
+            <value>the character encoding of te byte array representation.</value>
+        </member>
+        <member name="T:Adaptive.SimpleBinaryEncoding.SbePrimitiveType">
+            <summary>
+            List of available SBE types
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.SbePrimitiveType.Char">
+            <summary>
+            SBE Type Char
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.SbePrimitiveType.Int8">
+            <summary>
+            SBE Type INT8
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.SbePrimitiveType.Int16">
+            <summary>
+            SBE Type INT16
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.SbePrimitiveType.Int32">
+            <summary>
+            SBE Type INT32
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.SbePrimitiveType.Int64">
+            <summary>
+            SBE Type INT64
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.SbePrimitiveType.UInt8">
+            <summary>
+            SBE Type UINT8
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.SbePrimitiveType.UInt16">
+            <summary>
+            SBE Type UINT16
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.SbePrimitiveType.UInt32">
+            <summary>
+            SBE Type UINT32
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.SbePrimitiveType.UInt64">
+            <summary>
+            SBE Type UINT64
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.SbePrimitiveType.Float">
+            <summary>
+            SBE Type FLOAT
+            </summary>
+        </member>
+        <member name="F:Adaptive.SimpleBinaryEncoding.SbePrimitiveType.Double">
+            <summary>
+            SBE Type DOUBLE
+            </summary>
+        </member>
+        <member name="T:Adaptive.SimpleBinaryEncoding.Util.Verify">
+            <summary>
+            Various verification checks to be applied in code.
+            </summary>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Util.Verify.NotNull(System.Object,System.String)">
+            <summary>
+            Verify that a reference is not null.
+            </summary>
+            <param name="reference"> to be verified not null. </param>
+            <param name="name"> of the reference to be verified. </param>
+        </member>
+        <member name="M:Adaptive.SimpleBinaryEncoding.Util.Verify.Present``2(System.Collections.Generic.IDictionary{``0,``1},``0,System.String)">
+            <summary>
+            Verify that a map contains and entry for a given key.
+            </summary>
+            <param name="map"> to be checked. </param>
+            <param name="key"> to get by. </param>
+            <param name="name"> of entry. </param>
+        </member>
+    </members>
+</doc>
