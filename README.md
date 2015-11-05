@@ -1,4 +1,4 @@
-﻿# 说明：项目Disruptor是从disruptor java 3.3.0版本移植到.net 平台
+# 说明：项目Disruptor是从disruptor java 3.3.0版本移植到.net 平台
 # 系统要求：.net framework 4.5 vs 2013  
 # java 版本地址：http://lmax-exchange.github.io/disruptor/
 
@@ -41,8 +41,6 @@
   * 11.RingBuffer Disruptor显示的核心类，可重复使用的包含数据的环形缓冲
   * 12.BatchEventProcessor 批量事件处理
   */
-__________________________________________________________________________
-
 //修改日志
-
-2013.8.27 
+3.3.0 还有些性能测试没有完成，有兴趣的童鞋，拉源码去翻译吧。
+   
