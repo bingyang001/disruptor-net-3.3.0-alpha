@@ -20,13 +20,18 @@ namespace disruptor.rabbitmq
         {
             RingBuffer<RabbitmqMessage2> _ringBuffer = RingBuffer<RabbitmqMessage2>.CreateSingleProducer(() => new RabbitmqMessage2(), 1024 * 64, new YieldingWaitStrategy());
             var sequenceBarrier = _ringBuffer.NewBarrier();
-            var batchEventProcessor = new BatchEventProcessor<RabbitmqMessage2>(_ringBuffer, sequenceBarrier, new REventHandler());
+            var e = new CountdownEvent(1);
+            var count=  500000;
+            var batchEventProcessor = new BatchEventProcessor<RabbitmqMessage2>(_ringBuffer, sequenceBarrier,
+                new REventHandler(e, count - 1));
+
             _ringBuffer.AddGatingSequences(batchEventProcessor.Sequence);
             var connFactory = new ConnectionFactory();
-            connFactory.HostName="172.16.100.105";
-            connFactory.Port =5672;
+            connFactory.HostName="192.168.99.100";
+            connFactory.Port =32770;
+            connFactory.UserName = "admin";
+            connFactory.Password = "671224";
             var watch=Stopwatch.StartNew ();
-            var count=  500000;
             using (var conn = connFactory.CreateConnection())
             using (var channel = conn.CreateModel())
             {
@@ -42,6 +47,7 @@ namespace disruptor.rabbitmq
                    evt.Channel=channel ;
                    _ringBuffer.Publish(sequence);
                }
+               e.Wait();
             }
             watch.Stop ();
             var total=watch.ElapsedMilliseconds;
@@ -55,8 +61,16 @@ namespace disruptor.rabbitmq
          Console.Read ();
         }
     }
-    public class REventHandler : IEventHandler<RabbitmqMessage2> 
+    public class REventHandler : IEventHandler<RabbitmqMessage2>
     {
+        private CountdownEvent _countdownEvent;
+        private int _expectedCount;
+
+        public REventHandler(CountdownEvent countdownEvent, int expectedCount)
+        {
+            _countdownEvent = countdownEvent;
+            _expectedCount = expectedCount;
+        }
 
         #region IEventHandler<RabbitmqMessage> 成员
 
@@ -64,6 +78,11 @@ namespace disruptor.rabbitmq
         {
             //@event.Channel.ExchangeDeclare("gaoxu","topic",true);
             @event.Channel.BasicPublish("gaoxu", "#.#", null, System.Text.Encoding.GetEncoding("utf-8").GetBytes(@event.M));
+
+            if (sequence == _expectedCount)
+            {
+                _countdownEvent.Signal();
+            }
         }
 
         #endregion
